@@ -147,6 +147,7 @@ export function Footer() {
               <LocalClock timezone="Europe/Helsinki" label="HAMINA" />
               <LocalClock timezone="Asia/Shanghai" label="HANGZHOU" />
               <LocalClock timezone="Australia/Melbourne" label="MELBOURNE" />
+              <LocalClock timezone="Pacific/Auckland" label="AUCKLAND" />
             </div>
           </div>
         </div>
