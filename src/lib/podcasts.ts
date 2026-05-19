@@ -2,12 +2,16 @@ export interface PodcastEpisode {
   id: string;
   title: string;
   summary: string;
-  duration: string; // "HH:MM:SS"
-  pubDate: string;  // ISO date string
+  duration: string;
+  pubDate: string;
   audio: string;
+  image: string;
   season: number;
   isTrailer?: boolean;
 }
+
+const CHANNEL_ART =
+  "https://image.simplecastcdn.com/images/f743f9e0-8ec4-43dc-8361-431829f4c096/f8689354-4fe4-4008-a39a-6a001e52af7e/3000x3000/white-wtil-cover-template.jpg?aid=rss_feed";
 
 export const podcastEpisodes: PodcastEpisode[] = [
   // ── Season 5 (2026) ──────────────────────────────────────────
@@ -18,6 +22,7 @@ export const podcastEpisodes: PodcastEpisode[] = [
     duration: "00:21:36",
     pubDate: "2026-03-11",
     audio: "https://mgln.ai/e/p425918/cdn.simplecast.com/media/audio/transcoded/e5ae886a-f9ba-4ad2-a303-a77b027f89af/1fa9e054-c34b-489c-86b1-bd3464944c5c/episodes/audio/group/7a3bde81-3998-40a2-9e65-4b7695fb91ce/group-item/23a1248a-d15d-40bb-abb7-6290add98312/128_default_tc.mp3",
+    image: "https://image.simplecastcdn.com/images/f743f9e0-8ec4-43dc-8361-431829f4c096/8aab7565-fa2a-4936-8b1c-70df427ed498/3000x3000/ep10square512x512.jpg?aid=rss_feed",
     season: 5,
   },
   {
@@ -27,6 +32,7 @@ export const podcastEpisodes: PodcastEpisode[] = [
     duration: "00:23:06",
     pubDate: "2026-03-04",
     audio: "https://mgln.ai/e/p425918/cdn.simplecast.com/media/audio/transcoded/e5ae886a-f9ba-4ad2-a303-a77b027f89af/1fa9e054-c34b-489c-86b1-bd3464944c5c/episodes/audio/group/1da96b42-8eca-434d-8041-0cfa68c89264/group-item/b642c16c-b550-4ed6-a44f-2834ca901f1f/128_default_tc.mp3",
+    image: "https://image.simplecastcdn.com/images/f743f9e0-8ec4-43dc-8361-431829f4c096/4ac1b846-199f-4f5d-9838-b303cc91eb6c/3000x3000/ep9square512x512.jpg?aid=rss_feed",
     season: 5,
   },
   {
@@ -36,6 +42,7 @@ export const podcastEpisodes: PodcastEpisode[] = [
     duration: "00:26:55",
     pubDate: "2026-02-25",
     audio: "https://mgln.ai/e/p425918/cdn.simplecast.com/media/audio/transcoded/e5ae886a-f9ba-4ad2-a303-a77b027f89af/1fa9e054-c34b-489c-86b1-bd3464944c5c/episodes/audio/group/2fa8d101-d710-42e2-be14-69c051cee263/group-item/580a6a85-0df8-41d6-afa5-a723e1fa61c1/128_default_tc.mp3",
+    image: "https://image.simplecastcdn.com/images/f743f9e0-8ec4-43dc-8361-431829f4c096/4a19e673-63dc-4b35-86eb-3eb0658abbdd/3000x3000/ep8square512x512.jpg?aid=rss_feed",
     season: 5,
   },
   {
@@ -45,6 +52,7 @@ export const podcastEpisodes: PodcastEpisode[] = [
     duration: "00:17:32",
     pubDate: "2026-02-18",
     audio: "https://mgln.ai/e/p425918/cdn.simplecast.com/audio/1fa9e054-c34b-489c-86b1-bd3464944c5c/episodes/db9755e1-557d-4df7-bd78-915eadc88b06/audio/9aed0790-5f14-4be5-964f-e3d341f32ab5/default_tc.mp3",
+    image: "https://image.simplecastcdn.com/images/f743f9e0-8ec4-43dc-8361-431829f4c096/fdefdc2d-b67f-4b77-9b33-b1d3126033f1/3000x3000/ep7-square-512x512.jpg?aid=rss_feed",
     season: 5,
   },
   {
@@ -54,6 +62,7 @@ export const podcastEpisodes: PodcastEpisode[] = [
     duration: "00:22:34",
     pubDate: "2026-02-11",
     audio: "https://mgln.ai/e/p425918/cdn.simplecast.com/audio/1fa9e054-c34b-489c-86b1-bd3464944c5c/episodes/6ff169b3-7498-47cd-8520-7eb6c0aa3202/audio/fc833640-b00a-4f46-9edb-6eca6896a8e2/default_tc.mp3",
+    image: "https://image.simplecastcdn.com/images/f743f9e0-8ec4-43dc-8361-431829f4c096/80cc34e8-79b0-4934-bd2c-21370642d274/3000x3000/ep6-square-512x512.jpg?aid=rss_feed",
     season: 5,
   },
   {
@@ -63,6 +72,7 @@ export const podcastEpisodes: PodcastEpisode[] = [
     duration: "00:21:12",
     pubDate: "2026-02-04",
     audio: "https://mgln.ai/e/p425918/cdn.simplecast.com/audio/1fa9e054-c34b-489c-86b1-bd3464944c5c/episodes/636c4168-112d-43ca-bb25-85a728d85561/audio/1de877cd-ef61-4370-afae-181936bd3c53/default_tc.mp3",
+    image: "https://image.simplecastcdn.com/images/f743f9e0-8ec4-43dc-8361-431829f4c096/88aef2ee-032d-4d84-bd6f-ac13a067dfb2/3000x3000/ep5-square-512x512.jpg?aid=rss_feed",
     season: 5,
   },
   {
@@ -72,6 +82,7 @@ export const podcastEpisodes: PodcastEpisode[] = [
     duration: "00:19:58",
     pubDate: "2026-01-28",
     audio: "https://mgln.ai/e/p425918/cdn.simplecast.com/audio/1fa9e054-c34b-489c-86b1-bd3464944c5c/episodes/20bae55d-659b-4e7c-a119-6e3809d1c56f/audio/9aaf23de-561b-4e79-b8f8-a48d3139649b/default_tc.mp3",
+    image: "https://image.simplecastcdn.com/images/f743f9e0-8ec4-43dc-8361-431829f4c096/24dd9e99-c4dc-4171-8f04-6891f2b9094e/3000x3000/ep4-square-512x512.jpg?aid=rss_feed",
     season: 5,
   },
   {
@@ -81,6 +92,7 @@ export const podcastEpisodes: PodcastEpisode[] = [
     duration: "00:19:41",
     pubDate: "2026-01-21",
     audio: "https://mgln.ai/e/p425918/cdn.simplecast.com/audio/1fa9e054-c34b-489c-86b1-bd3464944c5c/episodes/3f1b094e-f507-4320-93a6-43b5591f4cb5/audio/4444457a-6be2-4548-aa4d-30d887a9bea2/default_tc.mp3",
+    image: "https://image.simplecastcdn.com/images/f743f9e0-8ec4-43dc-8361-431829f4c096/23f804fd-014f-4dfe-bbf9-b417c130007e/3000x3000/ep3-square-512x512.jpg?aid=rss_feed",
     season: 5,
   },
   {
@@ -90,6 +102,7 @@ export const podcastEpisodes: PodcastEpisode[] = [
     duration: "00:21:40",
     pubDate: "2026-01-14",
     audio: "https://mgln.ai/e/p425918/cdn.simplecast.com/audio/1fa9e054-c34b-489c-86b1-bd3464944c5c/episodes/3e886322-1663-4395-ab46-0325b7d16841/audio/6a8b5ce8-d5d0-4889-9a6e-24e390e8a7fb/default_tc.mp3",
+    image: "https://image.simplecastcdn.com/images/f743f9e0-8ec4-43dc-8361-431829f4c096/3249ab4a-3def-4ab3-807f-16a02733b638/3000x3000/medicine-ep2-square-3000x3000.jpg?aid=rss_feed",
     season: 5,
   },
   {
@@ -99,6 +112,7 @@ export const podcastEpisodes: PodcastEpisode[] = [
     duration: "00:27:25",
     pubDate: "2026-01-07",
     audio: "https://mgln.ai/e/p425918/cdn.simplecast.com/audio/1fa9e054-c34b-489c-86b1-bd3464944c5c/episodes/fb737f05-5909-4d6a-90ce-374e96c52269/audio/6e4e580a-a430-4108-b41b-7e57b48e4100/default_tc.mp3",
+    image: "https://image.simplecastcdn.com/images/f743f9e0-8ec4-43dc-8361-431829f4c096/a621ab93-220c-40ae-9c09-f8747091f6a8/3000x3000/innovation-ep1-square-3000x3000.jpg?aid=rss_feed",
     season: 5,
   },
   {
@@ -108,6 +122,7 @@ export const podcastEpisodes: PodcastEpisode[] = [
     duration: "00:02:54",
     pubDate: "2025-12-17",
     audio: "https://mgln.ai/e/p425918/cdn.simplecast.com/audio/1fa9e054-c34b-489c-86b1-bd3464944c5c/episodes/eb81c8f1-6499-489b-8e7a-cb5278322c79/audio/85c84f0f-7c10-4cd8-aba3-e47c30e2eb4c/default_tc.mp3",
+    image: CHANNEL_ART,
     season: 5,
     isTrailer: true,
   },
@@ -120,6 +135,7 @@ export const podcastEpisodes: PodcastEpisode[] = [
     duration: "00:30:10",
     pubDate: "2024-11-06",
     audio: "https://mgln.ai/e/p425918/cdn.simplecast.com/audio/1fa9e054-c34b-489c-86b1-bd3464944c5c/episodes/bc4b8237-d14e-4d56-b911-b83c4eab1d7c/audio/81ad9ec8-08d3-42d0-9492-a1e5b1f50595/default_tc.mp3",
+    image: "https://image.simplecastcdn.com/images/f743f9e0-8ec4-43dc-8361-431829f4c096/ac4288ec-5cdf-4bb6-a0f4-cf61fad0e2f0/3000x3000/5-wtil-s4-circularity-3000sq-300dpi-layers-wlogo.jpg?aid=rss_feed",
     season: 4,
   },
   {
@@ -129,6 +145,7 @@ export const podcastEpisodes: PodcastEpisode[] = [
     duration: "00:35:51",
     pubDate: "2024-10-30",
     audio: "https://mgln.ai/e/p425918/cdn.simplecast.com/audio/1fa9e054-c34b-489c-86b1-bd3464944c5c/episodes/9ab598de-bbe5-4c28-a035-701325598e88/audio/28c2b98e-2d05-4149-b169-2e720a8c2268/default_tc.mp3",
+    image: "https://image.simplecastcdn.com/images/f743f9e0-8ec4-43dc-8361-431829f4c096/ed90687a-b2e3-4c73-9ee2-0e5fc495a335/3000x3000/4-wtil-s4-health-3000sq-300dpi-layers-wlogo.jpg?aid=rss_feed",
     season: 4,
   },
   {
@@ -138,6 +155,7 @@ export const podcastEpisodes: PodcastEpisode[] = [
     duration: "00:35:59",
     pubDate: "2024-10-23",
     audio: "https://mgln.ai/e/p425918/cdn.simplecast.com/audio/1fa9e054-c34b-489c-86b1-bd3464944c5c/episodes/66829ea1-ffdb-4e33-971c-981938bea3a8/audio/831a30ce-a0f9-4484-a947-cf47905c481a/default_tc.mp3",
+    image: "https://image.simplecastcdn.com/images/f743f9e0-8ec4-43dc-8361-431829f4c096/c71ec27d-9796-4cc8-a432-8854e0aa8c53/3000x3000/ep3-wtil-art.jpg?aid=rss_feed",
     season: 4,
   },
   {
@@ -147,6 +165,7 @@ export const podcastEpisodes: PodcastEpisode[] = [
     duration: "00:39:36",
     pubDate: "2024-10-16",
     audio: "https://mgln.ai/e/p425918/cdn.simplecast.com/audio/1fa9e054-c34b-489c-86b1-bd3464944c5c/episodes/9e781cac-0f6b-46a1-babf-1a9bc088cf05/audio/803c8650-a324-4732-987e-7f108f6a6aad/default_tc.mp3",
+    image: "https://image.simplecastcdn.com/images/f743f9e0-8ec4-43dc-8361-431829f4c096/e050bb87-ad7e-4973-8393-c509a24e05d7/3000x3000/ep2-wtil-art.jpg?aid=rss_feed",
     season: 4,
   },
   {
@@ -156,6 +175,7 @@ export const podcastEpisodes: PodcastEpisode[] = [
     duration: "00:40:18",
     pubDate: "2024-10-09",
     audio: "https://mgln.ai/e/p425918/cdn.simplecast.com/audio/1fa9e054-c34b-489c-86b1-bd3464944c5c/episodes/f6772f90-28db-4638-91ab-dfb8e0949d3c/audio/e691602d-c0d7-4600-9c49-95a343b7febf/default_tc.mp3",
+    image: "https://image.simplecastcdn.com/images/f743f9e0-8ec4-43dc-8361-431829f4c096/3e0cf68d-eedf-44b1-9ed9-3028daf56f87/3000x3000/1-wtil-s4-climate-3000sq-300dpi-layer-w-logo-update.jpg?aid=rss_feed",
     season: 4,
   },
   {
@@ -165,6 +185,7 @@ export const podcastEpisodes: PodcastEpisode[] = [
     duration: "00:02:51",
     pubDate: "2024-09-25",
     audio: "https://mgln.ai/e/p425918/cdn.simplecast.com/audio/1fa9e054-c34b-489c-86b1-bd3464944c5c/episodes/b3bf760c-6f1f-4278-9625-87b4deeab866/audio/f4021433-3c44-4c4c-a44b-0b3c5f8e24b8/default_tc.mp3",
+    image: CHANNEL_ART,
     season: 4,
     isTrailer: true,
   },
@@ -177,6 +198,7 @@ export const podcastEpisodes: PodcastEpisode[] = [
     duration: "00:24:02",
     pubDate: "2023-07-12",
     audio: "https://mgln.ai/e/p425918/cdn.simplecast.com/audio/1fa9e054-c34b-489c-86b1-bd3464944c5c/episodes/cde333eb-a130-4816-9e7d-a53f258a00ec/audio/8ac948b2-41d6-4d19-acba-fce2beb00ea1/default_tc.mp3",
+    image: "https://image.simplecastcdn.com/images/f743f9e0-8ec4-43dc-8361-431829f4c096/d7cc0ee7-e960-4f02-ba0d-55b03c39e0e5/3000x3000/gdc-wtil-s3-ep9-album-3000x3000.jpg?aid=rss_feed",
     season: 3,
   },
   {
@@ -186,6 +208,7 @@ export const podcastEpisodes: PodcastEpisode[] = [
     duration: "00:18:29",
     pubDate: "2023-06-28",
     audio: "https://mgln.ai/e/p425918/cdn.simplecast.com/audio/1fa9e054-c34b-489c-86b1-bd3464944c5c/episodes/77a19d71-3911-424e-9292-7c7ba2337d5e/audio/78fc5979-ec93-44a7-ad06-304a24942364/default_tc.mp3",
+    image: "https://image.simplecastcdn.com/images/f743f9e0-8ec4-43dc-8361-431829f4c096/09d6ea77-52e0-4901-9a14-63642baecbd3/3000x3000/gdc-wtil-s3-ep8-album-3000x3000.jpg?aid=rss_feed",
     season: 3,
   },
   {
@@ -195,6 +218,7 @@ export const podcastEpisodes: PodcastEpisode[] = [
     duration: "00:18:47",
     pubDate: "2023-06-14",
     audio: "https://mgln.ai/e/p425918/cdn.simplecast.com/audio/1fa9e054-c34b-489c-86b1-bd3464944c5c/episodes/0b9fd453-f719-403a-9802-050728fee0d4/audio/732f98fe-cc10-41dc-980b-30269ed1d1bd/default_tc.mp3",
+    image: "https://image.simplecastcdn.com/images/f743f9e0-8ec4-43dc-8361-431829f4c096/9d9eab46-8ce5-45c2-8e10-3a12d0a23d87/3000x3000/gdc-wtil-s3-ep7-album-3000x3000.jpg?aid=rss_feed",
     season: 3,
   },
   {
@@ -204,6 +228,7 @@ export const podcastEpisodes: PodcastEpisode[] = [
     duration: "00:17:13",
     pubDate: "2023-05-31",
     audio: "https://mgln.ai/e/p425918/cdn.simplecast.com/audio/1fa9e054-c34b-489c-86b1-bd3464944c5c/episodes/04e1ebe8-d471-4b50-9d80-a2df9e56d2a9/audio/3b67ef9e-4d39-469b-9c60-33453653dcd9/default_tc.mp3",
+    image: "https://image.simplecastcdn.com/images/f743f9e0-8ec4-43dc-8361-431829f4c096/9304c007-5ba6-4562-9e08-9e8673cfdf2e/3000x3000/gdc-wtil-s3-ep6-album-3000x3000.jpg?aid=rss_feed",
     season: 3,
   },
   {
@@ -213,6 +238,7 @@ export const podcastEpisodes: PodcastEpisode[] = [
     duration: "00:18:42",
     pubDate: "2023-05-17",
     audio: "https://mgln.ai/e/p425918/cdn.simplecast.com/audio/1fa9e054-c34b-489c-86b1-bd3464944c5c/episodes/bdb1a8a9-c725-498e-a9b5-1e4ed3c75054/audio/f1c6b53c-4b63-4ae8-94b1-c2b0b5c7b9a9/default_tc.mp3",
+    image: "https://image.simplecastcdn.com/images/f743f9e0-8ec4-43dc-8361-431829f4c096/23f0a386-d6e8-4c24-a158-dd905252fc6e/3000x3000/gdc-wtil-s3-ep5-album-3000x3000-1.jpg?aid=rss_feed",
     season: 3,
   },
   {
@@ -222,6 +248,7 @@ export const podcastEpisodes: PodcastEpisode[] = [
     duration: "00:17:48",
     pubDate: "2023-05-03",
     audio: "https://mgln.ai/e/p425918/cdn.simplecast.com/audio/1fa9e054-c34b-489c-86b1-bd3464944c5c/episodes/073f2e9b-2a11-40ff-8ce0-36a9b4c4bd88/audio/c2c4e9aa-b791-454a-a798-04efc6f9e22f/default_tc.mp3",
+    image: "https://image.simplecastcdn.com/images/f743f9e0-8ec4-43dc-8361-431829f4c096/ec36020b-eb02-4b6e-9da5-81a4d28e0b04/3000x3000/gdc-wtil-s3-ep4-album-3000x3000.jpg?aid=rss_feed",
     season: 3,
   },
   {
@@ -231,6 +258,7 @@ export const podcastEpisodes: PodcastEpisode[] = [
     duration: "00:14:02",
     pubDate: "2023-04-19",
     audio: "https://mgln.ai/e/p425918/cdn.simplecast.com/audio/1fa9e054-c34b-489c-86b1-bd3464944c5c/episodes/067ccfff-51f8-4181-94ef-081fea159834/audio/60f64776-b10b-4e26-955e-974e6ddbac08/default_tc.mp3",
+    image: "https://image.simplecastcdn.com/images/f743f9e0-8ec4-43dc-8361-431829f4c096/52e0f646-0c5a-4149-8905-efdb9a3dafa3/3000x3000/gdc-wtil-s3-ep3-album-3000x3000.jpg?aid=rss_feed",
     season: 3,
   },
   {
@@ -240,6 +268,7 @@ export const podcastEpisodes: PodcastEpisode[] = [
     duration: "00:15:21",
     pubDate: "2023-04-05",
     audio: "https://mgln.ai/e/p425918/cdn.simplecast.com/audio/1fa9e054-c34b-489c-86b1-bd3464944c5c/episodes/8476967c-1fda-4b6c-9426-62b78095a3d2/audio/1a6b9689-5e0b-4feb-9a32-eb96311628ec/default_tc.mp3",
+    image: "https://image.simplecastcdn.com/images/f743f9e0-8ec4-43dc-8361-431829f4c096/47e237a0-83da-4e00-9c13-d79d1cccf895/3000x3000/gdc-wtil-s3-ep2-album-3000x3000.jpg?aid=rss_feed",
     season: 3,
   },
   {
@@ -249,6 +278,7 @@ export const podcastEpisodes: PodcastEpisode[] = [
     duration: "00:16:00",
     pubDate: "2023-03-22",
     audio: "https://mgln.ai/e/p425918/cdn.simplecast.com/audio/1fa9e054-c34b-489c-86b1-bd3464944c5c/episodes/eokRF5D44eA/audio/default_tc.mp3",
+    image: CHANNEL_ART,
     season: 3,
   },
 ];
@@ -261,7 +291,7 @@ export function parseDuration(dur: string): number {
   return 0;
 }
 
-/** Format seconds → "mm:ss" or "h:mm:ss" */
+/** Format seconds → "m:ss" or "h:mm:ss" */
 export function formatTime(secs: number): string {
   const h = Math.floor(secs / 3600);
   const m = Math.floor((secs % 3600) / 60);

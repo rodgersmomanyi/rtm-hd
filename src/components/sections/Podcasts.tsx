@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
+import Image from "next/image";
 import { motion, useInView } from "framer-motion";
 import { Play, Pause, Clock, Mic, ChevronDown, ChevronUp } from "lucide-react";
 import { podcastEpisodes, formatTime, parseDuration } from "@/lib/podcasts";
@@ -45,21 +46,39 @@ function EpisodeRow({ ep, index }: { ep: (typeof podcastEpisodes)[0]; index: num
       }`}
     >
       <div className="flex items-start gap-4 p-4 md:p-5">
-        {/* Play button */}
+        {/* Artwork + Play overlay */}
         <button
           onClick={handlePlay}
           aria-label={isPlaying ? `Pause ${ep.title}` : `Play ${ep.title}`}
-          className={`shrink-0 w-11 h-11 rounded-full flex items-center justify-center transition-all duration-200 ${
-            isActive
-              ? "bg-brand-orange text-white shadow-lg shadow-brand-orange/30"
-              : "bg-[var(--border)] group-hover:bg-brand-orange/20 text-[var(--fg)] group-hover:text-brand-orange"
-          }`}
+          className="relative shrink-0 w-14 h-14 rounded-xl overflow-hidden focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-orange"
         >
-          {isPlaying ? (
-            <Pause size={16} fill="currentColor" />
-          ) : (
-            <Play size={16} fill="currentColor" className="ml-0.5" />
-          )}
+          <Image
+            src={ep.image}
+            alt={ep.title}
+            fill
+            className="object-cover"
+            sizes="56px"
+          />
+          {/* Hover / active overlay */}
+          <span
+            className={`absolute inset-0 flex items-center justify-center transition-all duration-200 ${
+              isActive
+                ? "bg-black/50"
+                : "bg-black/0 group-hover:bg-black/40"
+            }`}
+          >
+            <span
+              className={`text-white transition-opacity duration-200 ${
+                isActive ? "opacity-100" : "opacity-0 group-hover:opacity-100"
+              }`}
+            >
+              {isPlaying ? (
+                <Pause size={18} fill="white" />
+              ) : (
+                <Play size={18} fill="white" className="ml-0.5" />
+              )}
+            </span>
+          </span>
         </button>
 
         {/* Info */}
