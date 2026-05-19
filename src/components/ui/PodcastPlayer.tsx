@@ -177,13 +177,13 @@ function StickyPlayer({
 
       <div className="mx-auto max-w-[1400px] px-4 md:px-10 py-3 flex items-center gap-4">
         {/* Artwork thumbnail */}
-        <div className="relative shrink-0 w-11 h-11 rounded-lg overflow-hidden hidden sm:block">
+        <div className="relative shrink-0 w-10 h-10 sm:w-11 sm:h-11 rounded-lg overflow-hidden">
           <Image
             src={episode.image}
             alt={episode.title}
             fill
             className="object-cover"
-            sizes="44px"
+            sizes="(max-width: 640px) 40px, 44px"
           />
         </div>
 

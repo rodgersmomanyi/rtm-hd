@@ -8,16 +8,27 @@ import { podcastEpisodes, formatTime, parseDuration } from "@/lib/podcasts";
 import { usePodcastPlayer } from "@/components/ui/PodcastPlayer";
 import { MagneticButton } from "@/components/ui/MagneticButton";
 
-// Group episodes by season, latest first
-const seasons = [5, 4, 3];
+// Derive all seasons dynamically from episode data (latest season first)
+const allSeasons = [...new Set(podcastEpisodes.map((ep) => ep.season))].sort(
+  (a, b) => b - a
+);
 
-const bySeasonLatestFirst = seasons.map((s) => ({
+const maxSeason = allSeasons[0];
+
+const minYear = Math.min(
+  ...podcastEpisodes.map((ep) => new Date(ep.pubDate).getFullYear())
+);
+const maxYear = Math.max(
+  ...podcastEpisodes.map((ep) => new Date(ep.pubDate).getFullYear())
+);
+
+const bySeasonLatestFirst = allSeasons.map((s) => ({
   season: s,
   episodes: podcastEpisodes.filter((ep) => ep.season === s),
   // already sorted latest→oldest in the data file
 }));
 
-function EpisodeRow({ ep, index }: { ep: (typeof podcastEpisodes)[0]; index: number }) {
+function EpisodeRow({ ep, index }: { ep: (typeof podcastEpisodes)[number]; index: number }) {
   const { play, pause, currentId, playing } = usePodcastPlayer();
   const [expanded, setExpanded] = useState(false);
   const isActive = currentId === ep.id;
@@ -170,7 +181,7 @@ function EpisodeRow({ ep, index }: { ep: (typeof podcastEpisodes)[0]; index: num
 export function Podcasts() {
   const headRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(headRef, { once: true, margin: "-80px" });
-  const [activeSeason, setActiveSeason] = useState(5);
+  const [activeSeason, setActiveSeason] = useState(maxSeason);
 
   const currentSeason = bySeasonLatestFirst.find((s) => s.season === activeSeason)!;
 
@@ -198,7 +209,7 @@ export function Podcasts() {
             <p className="text-[var(--fg)] opacity-60 mt-4 max-w-md"
               style={{ fontSize: "1rem", lineHeight: 1.6 }}>
               A podcast by Google exploring how data centers power the people and innovations
-              changing our world. {seasons.reduce((t, s) => t + bySeasonLatestFirst.find(b => b.season === s)!.episodes.length, 0)} episodes across {seasons.length} seasons.
+              changing our world. {podcastEpisodes.length} episodes across {allSeasons.length} seasons.
             </p>
           </div>
 
@@ -212,7 +223,7 @@ export function Podcasts() {
                 style={{ fontSize: "0.95rem", letterSpacing: "-0.01em" }}>
                 By Google
               </div>
-              <div className="eyebrow text-[var(--fg)] opacity-40">5 Seasons · 2022–2026</div>
+              <div className="eyebrow text-[var(--fg)] opacity-40">{allSeasons.length} Seasons · {minYear}–{maxYear}</div>
               <a
                 href="https://feeds.simplecast.com/uq015LLC"
                 target="_blank"
@@ -240,7 +251,7 @@ export function Podcasts() {
               style={{ fontSize: "0.8rem", letterSpacing: "0.02em" }}
             >
               Season {season}
-              {season === 5 && (
+              {season === maxSeason && (
                 <span className="ml-2 px-1.5 py-0.5 rounded bg-white/20 text-white"
                   style={{ fontSize: "0.6rem", fontWeight: 700 }}>
                   LATEST
