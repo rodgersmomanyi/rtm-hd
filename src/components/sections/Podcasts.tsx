@@ -50,10 +50,10 @@ function EpisodeRow({ ep, index }: { ep: (typeof podcastEpisodes)[number]; index
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-30px" }}
       transition={{ duration: 0.4, delay: Math.min(index * 0.04, 0.3) }}
-      className={`group border rounded-2xl transition-all duration-300 overflow-hidden ${
+      className={`group rounded-2xl transition-all duration-300 overflow-hidden ${
         isActive
-          ? "border-brand-orange bg-brand-orange/5"
-          : "border-[var(--border)] hover:border-brand-orange/50"
+          ? "glass border-brand-orange/50 bg-brand-orange/5 shadow-[0_4px_24px_rgba(255,106,26,0.12)]"
+          : "glass hover:glass-hover"
       }`}
     >
       <div className="flex items-start gap-4 p-4 md:p-5">
@@ -186,9 +186,13 @@ export function Podcasts() {
     <section
       id="podcasts"
       aria-label="Where the Internet Lives podcast"
-      className="py-24 md:py-36 bg-[var(--bg)]"
+      className="py-24 md:py-36 bg-[var(--bg)] relative overflow-hidden"
     >
-      <div className="mx-auto max-w-[1400px] px-6 md:px-10">
+      {/* Ambient orbs */}
+      <div className="orb w-[500px] h-[500px] bg-brand-orange top-0 -right-40 opacity-10 dark:opacity-15" />
+      <div className="orb w-[400px] h-[400px] bg-brand-blue bottom-1/4 -left-32 opacity-10 dark:opacity-15" />
+
+      <div className="mx-auto max-w-[1400px] px-6 md:px-10 relative z-10">
         {/* Header */}
         <motion.div
           ref={headRef}
@@ -211,7 +215,7 @@ export function Podcasts() {
           </div>
 
           {/* Podcast brand badge */}
-          <div className="flex items-center gap-4 px-5 py-4 rounded-2xl border border-[var(--border)] shrink-0">
+          <div className="flex items-center gap-4 px-5 py-4 rounded-2xl glass shrink-0">
             <div className="w-12 h-12 rounded-xl bg-brand-orange flex items-center justify-center shrink-0">
               <Mic size={22} className="text-white" />
             </div>
@@ -242,8 +246,8 @@ export function Podcasts() {
               onClick={() => setActiveSeason(season)}
               className={`px-4 py-2 rounded-full font-display font-bold transition-all duration-200 ${
                 activeSeason === season
-                  ? "bg-brand-orange text-white"
-                  : "border border-[var(--border)] text-[var(--fg)] opacity-50 hover:opacity-100 hover:border-brand-orange"
+                  ? "bg-brand-orange text-white shadow-[0_4px_20px_rgba(255,106,26,0.35)]"
+                  : "glass text-[var(--fg)] opacity-60 hover:opacity-100 hover:border-brand-orange hover:text-brand-orange"
               }`}
               style={{ fontSize: "0.8rem", letterSpacing: "0.02em" }}
             >
@@ -289,7 +293,7 @@ export function Podcasts() {
               href="https://feeds.simplecast.com/uq015LLC"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 border border-[var(--border)] text-[var(--fg)] font-display font-bold px-6 py-3 rounded-full hover:border-brand-orange hover:text-brand-orange transition-colors"
+              className="inline-flex items-center gap-2 glass text-[var(--fg)] font-display font-bold px-6 py-3 rounded-full hover:glass-hover hover:text-brand-orange transition-all duration-200"
               style={{ fontSize: "0.88rem" }}
             >
               RSS Feed ↗

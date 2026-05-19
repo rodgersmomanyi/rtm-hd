@@ -14,9 +14,13 @@ export function YoutubeSection({ videos }: { videos: VideoCardType[] }) {
     <section
       id="youtube"
       aria-label="RTM-HD YouTube channel"
-      className="py-24 md:py-36 section-blue"
+      className="py-24 md:py-36 section-blue relative overflow-hidden"
     >
-      <div className="mx-auto max-w-[1400px] px-6 md:px-10">
+      {/* Ambient orbs */}
+      <div className="orb w-[600px] h-[600px] bg-brand-orange top-1/2 -right-40 -translate-y-1/2 opacity-10" />
+      <div className="orb w-[400px] h-[400px] bg-brand-blue -bottom-20 -left-20 opacity-15" />
+
+      <div className="mx-auto max-w-[1400px] px-6 md:px-10 relative z-10">
         {/* Brand hero band */}
         <motion.div
           ref={headRef}

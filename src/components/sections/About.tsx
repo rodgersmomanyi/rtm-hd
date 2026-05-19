@@ -24,9 +24,13 @@ export function About() {
       id="about"
       ref={sectionRef}
       aria-label="About Rodgers"
-      className="py-24 md:py-36 bg-[var(--bg)]"
+      className="py-24 md:py-36 bg-[var(--bg)] relative overflow-hidden"
     >
-      <div className="mx-auto max-w-[1400px] px-6 md:px-10">
+      {/* Ambient orbs */}
+      <div className="orb w-[500px] h-[500px] bg-brand-orange -top-32 -right-24 opacity-15 dark:opacity-20" />
+      <div className="orb w-[350px] h-[350px] bg-brand-blue bottom-0 left-0 opacity-10 dark:opacity-15" />
+
+      <div className="mx-auto max-w-[1400px] px-6 md:px-10 relative z-10">
         {/* Eyebrow */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -144,7 +148,7 @@ export function About() {
         </div>
 
         {/* Stat counters */}
-        <div className="mt-20 md:mt-28 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-8 border-t border-[var(--border)] pt-12">
+        <div className="mt-20 md:mt-28 glass rounded-3xl p-8 md:p-10 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-8">
           {stats.map((stat) => (
             <Counter
               key={stat.label}

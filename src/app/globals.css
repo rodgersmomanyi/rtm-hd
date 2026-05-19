@@ -20,6 +20,14 @@
   --bg: #f6f5f1;
   --fg: #0b0b0f;
   --border: rgba(11, 11, 15, 0.12);
+
+  /* Glassmorphism tokens — light */
+  --glass-bg:        rgba(255, 255, 255, 0.55);
+  --glass-bg-hover:  rgba(255, 255, 255, 0.72);
+  --glass-border:    rgba(255, 255, 255, 0.75);
+  --glass-border-sm: rgba(0,   0,   0,   0.07);
+  --glass-shadow:    0 8px 32px rgba(0,0,0,0.08), 0 1px 4px rgba(0,0,0,0.04);
+  --glass-shadow-lg: 0 20px 60px rgba(0,0,0,0.12), 0 4px 16px rgba(0,0,0,0.06);
 }
 
 /* ── Dark mode ────────────────────────────────────────────── */
@@ -27,6 +35,14 @@ html.dark {
   --bg: #061a4a;
   --fg: #f6f5f1;
   --border: rgba(246, 245, 241, 0.12);
+
+  /* Glassmorphism tokens — dark */
+  --glass-bg:        rgba(255, 255, 255, 0.045);
+  --glass-bg-hover:  rgba(255, 255, 255, 0.08);
+  --glass-border:    rgba(255, 255, 255, 0.11);
+  --glass-border-sm: rgba(255, 255, 255, 0.09);
+  --glass-shadow:    0 8px 32px rgba(0,0,0,0.35), 0 1px 4px rgba(0,0,0,0.2);
+  --glass-shadow-lg: 0 20px 60px rgba(0,0,0,0.5), 0 4px 16px rgba(0,0,0,0.3);
 }
 
 /* ── Base resets ─────────────────────────────────────────── */
@@ -104,6 +120,56 @@ body {
   font-weight: 700;
   letter-spacing: 0.18em;
   text-transform: uppercase;
+}
+
+/* ── Glassmorphism utilities ──────────────────────────────── */
+@utility glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+}
+
+@utility glass-hover {
+  background: var(--glass-bg-hover);
+  backdrop-filter: blur(24px) saturate(200%);
+  -webkit-backdrop-filter: blur(24px) saturate(200%);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow-lg);
+}
+
+/* For always-dark sections (section-dark / section-blue) */
+@utility glass-dark {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4), 0 1px 4px rgba(0,0,0,0.2);
+}
+
+@utility glass-dark-hover {
+  background: rgba(255, 255, 255, 0.09);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+/* Orange-tinted accent glass */
+@utility glass-orange {
+  background: rgba(255, 106, 26, 0.08);
+  backdrop-filter: blur(16px) saturate(150%);
+  -webkit-backdrop-filter: blur(16px) saturate(150%);
+  border: 1px solid rgba(255, 106, 26, 0.22);
+  box-shadow: 0 4px 24px rgba(255, 106, 26, 0.1);
+}
+
+/* Ambient gradient orbs — shared base */
+@utility orb {
+  position: absolute;
+  border-radius: 9999px;
+  pointer-events: none;
+  filter: blur(100px);
+  opacity: 0.35;
+  will-change: transform;
 }
 
 /* ── Scroll progress bar ──────────────────────────────────── */

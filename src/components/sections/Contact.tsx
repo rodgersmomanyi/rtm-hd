@@ -46,15 +46,19 @@ export function Contact() {
   };
 
   const inputClass =
-    "w-full bg-transparent border border-[var(--border)] rounded-xl px-5 py-3.5 text-[var(--fg)] placeholder:text-[var(--fg)]/30 focus:outline-none focus:border-brand-orange transition-colors duration-200";
+    "w-full glass rounded-xl px-5 py-3.5 text-[var(--fg)] placeholder:text-[var(--fg)]/40 focus:outline-none focus:border-brand-orange focus:bg-[var(--glass-bg-hover)] transition-all duration-200";
 
   return (
     <section
       id="contact"
       aria-label="Contact"
-      className="py-24 md:py-36 bg-[var(--bg)]"
+      className="py-24 md:py-36 bg-[var(--bg)] relative overflow-hidden"
     >
-      <div className="mx-auto max-w-[1400px] px-6 md:px-10">
+      {/* Ambient orbs */}
+      <div className="orb w-[500px] h-[500px] bg-brand-orange -top-20 -right-32 opacity-15 dark:opacity-20" />
+      <div className="orb w-[400px] h-[400px] bg-brand-blue bottom-0 left-0 opacity-10 dark:opacity-15" />
+
+      <div className="mx-auto max-w-[1400px] px-6 md:px-10 relative z-10">
         <motion.div
           ref={headRef}
           initial={{ opacity: 0, y: 30 }}
@@ -83,9 +87,9 @@ export function Contact() {
             <div className="space-y-6 mb-10">
               <a
                 href="mailto:rodgers.momanyi@outlook.com"
-                className="flex items-center gap-4 group"
+                className="flex items-center gap-4 group glass rounded-2xl p-4 hover:glass-hover transition-all duration-300"
               >
-                <div className="w-10 h-10 rounded-full bg-brand-orange/10 flex items-center justify-center shrink-0 group-hover:bg-brand-orange/20 transition-colors">
+                <div className="w-10 h-10 rounded-full glass-orange flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
                   <Mail size={18} className="text-brand-orange" />
                 </div>
                 <div>
@@ -99,8 +103,8 @@ export function Contact() {
                 </div>
               </a>
 
-<div className="flex items-center gap-4">
-                <div className="w-10 h-10 rounded-full bg-brand-orange/10 flex items-center justify-center shrink-0">
+<div className="flex items-center gap-4 glass rounded-2xl p-4">
+                <div className="w-10 h-10 rounded-full glass-orange flex items-center justify-center shrink-0">
                   <MapPin size={18} className="text-brand-orange" />
                 </div>
                 <div>
@@ -145,6 +149,7 @@ export function Contact() {
             initial={{ opacity: 0, x: 30 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.7, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+            className="glass rounded-3xl p-8 md:p-10"
           >
             <AnimatePresence mode="wait">
               {formState === "success" ? (

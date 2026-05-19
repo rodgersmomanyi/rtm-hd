@@ -29,7 +29,7 @@ export function Nav() {
     <header
       className={`fixed top-0 left-0 right-0 z-[900] transition-all duration-500 ${
         scrolled
-          ? "py-3 backdrop-blur-md bg-[var(--bg)]/80 border-b border-[var(--border)]"
+          ? "py-3 backdrop-blur-xl bg-[var(--glass-bg)] border-b border-[var(--glass-border-sm)] shadow-[var(--glass-shadow)]"
           : "py-6"
       }`}
     >

@@ -87,7 +87,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[2000] bg-ink/80 backdrop-blur-sm flex items-end md:items-center justify-center p-4 md:p-8"
+            className="fixed inset-0 z-[2000] bg-ink/70 backdrop-blur-md flex items-end md:items-center justify-center p-4 md:p-8"
             onClick={(e) => e.target === e.currentTarget && setOpen(false)}
           >
             <motion.div
@@ -95,7 +95,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: 80, opacity: 0 }}
               transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-              className="bg-[var(--bg)] rounded-3xl p-8 md:p-10 max-w-2xl w-full max-h-[85dvh] overflow-y-auto"
+              className="glass rounded-3xl p-8 md:p-10 max-w-2xl w-full max-h-[85dvh] overflow-y-auto"
             >
               <div className="flex justify-between items-start mb-6">
                 <div>
@@ -125,7 +125,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
                 {project.description}
               </p>
 
-              <div className="bg-brand-orange/10 rounded-xl p-4 mb-6">
+              <div className="glass-orange rounded-xl p-4 mb-6">
                 <div className="eyebrow text-brand-orange mb-2">Key Result</div>
                 <div
                   className="font-display font-bold text-[var(--fg)]"
@@ -139,7 +139,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
                 {project.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="px-3 py-1.5 rounded-full border border-[var(--border)] text-[var(--fg)] opacity-70"
+                    className="px-3 py-1.5 rounded-full glass text-[var(--fg)] opacity-80"
                     style={{ fontSize: "0.72rem", fontWeight: 700, letterSpacing: "0.06em" }}
                   >
                     {tag}

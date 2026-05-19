@@ -25,8 +25,8 @@ export function TimelineItem({ entry, index }: TimelineItemProps) {
         animate={isInView ? { opacity: 1, x: 0, rotate: 0 } : {}}
         transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1], delay: 0.05 }}
         style={{ gridColumn: isLeft ? 1 : 2 }}
-        className={`bg-[var(--bg)] border border-[var(--border)] rounded-2xl p-6 md:p-8 hover:border-brand-orange transition-colors duration-300 ${
-          entry.isFuture ? "border-brand-orange/40 bg-brand-blue/5 dark:bg-brand-orange/5" : ""
+        className={`glass-dark rounded-2xl p-6 md:p-8 transition-all duration-300 hover:glass-dark-hover hover:scale-[1.01] ${
+          entry.isFuture ? "border-brand-orange/30 bg-brand-orange/5" : ""
         }`}
       >
         {entry.isFuture && (
@@ -66,7 +66,7 @@ export function TimelineItem({ entry, index }: TimelineItemProps) {
           {entry.tags.map((tag) => (
             <span
               key={tag}
-              className="px-2.5 py-1 rounded-full border border-[var(--border)] text-[var(--fg)] opacity-60 hover:opacity-100 hover:border-brand-orange transition-all duration-200"
+              className="px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-off-white opacity-60 hover:opacity-100 hover:border-brand-orange hover:text-brand-orange transition-all duration-200"
               style={{ fontSize: "0.7rem", letterSpacing: "0.06em", fontWeight: 700 }}
             >
               {tag}

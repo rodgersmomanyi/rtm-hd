@@ -15,9 +15,12 @@ export function Skills() {
     <section
       id="skills"
       aria-label="Certifications and skills"
-      className="py-24 md:py-36 bg-[var(--bg)] overflow-hidden"
+      className="py-24 md:py-36 bg-[var(--bg)] overflow-hidden relative"
     >
-      <div className="mx-auto max-w-[1400px] px-6 md:px-10">
+      {/* Ambient orb */}
+      <div className="orb w-[600px] h-[600px] bg-brand-orange top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-10 dark:opacity-15" />
+
+      <div className="mx-auto max-w-[1400px] px-6 md:px-10 relative z-10">
         <motion.div
           ref={headRef}
           initial={{ opacity: 0, y: 30 }}
@@ -49,7 +52,7 @@ export function Skills() {
       </div>
 
       {/* Skill tag cloud */}
-      <div className="mx-auto max-w-[1400px] px-6 md:px-10">
+      <div className="mx-auto max-w-[1400px] px-6 md:px-10 relative z-10">
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -65,7 +68,7 @@ export function Skills() {
               viewport={{ once: true }}
               transition={{ duration: 0.3, delay: i * 0.025 }}
               whileHover={{ y: -3, color: "#FF6A1A" }}
-              className="px-4 py-2 rounded-full border border-[var(--border)] font-display font-bold text-[var(--fg)] hover:border-brand-orange transition-all duration-200"
+              className="px-4 py-2 rounded-full glass font-display font-bold text-[var(--fg)] hover:glass-hover hover:text-brand-orange transition-all duration-200"
               style={{ fontSize: "clamp(0.75rem, 1.5vw, 0.9rem)", letterSpacing: "0.04em" }}
             >
               {skill}

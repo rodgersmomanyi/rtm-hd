@@ -39,7 +39,7 @@ export function VideoCard({ video }: { video: VideoCardType }) {
         </motion.div>
 
         {/* Meta */}
-        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-ink/90 to-transparent px-4 py-4">
+        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-ink/95 via-ink/60 to-transparent px-4 py-5">
           {video.viewCount && (
             <div className="eyebrow text-brand-orange mb-1">{video.viewCount} views</div>
           )}
@@ -59,12 +59,12 @@ export function VideoCard({ video }: { video: VideoCardType }) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[3000] bg-ink/95 flex items-center justify-center p-4"
+            className="fixed inset-0 z-[3000] bg-ink/90 backdrop-blur-md flex items-center justify-center p-4"
             onClick={(e) => e.target === e.currentTarget && setLightboxOpen(false)}
           >
             <button
               onClick={() => setLightboxOpen(false)}
-              className="absolute top-5 right-5 p-2 rounded-full border border-white/20 text-white hover:border-brand-orange hover:text-brand-orange transition-colors"
+              className="absolute top-5 right-5 p-2 rounded-full glass-dark text-white hover:border-brand-orange hover:text-brand-orange transition-all duration-200"
               aria-label="Close video"
             >
               <X size={20} />

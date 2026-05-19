@@ -80,6 +80,9 @@ export function Hero() {
           backgroundSize: "60px 60px",
         }}
       />
+      {/* Ambient orbs */}
+      <div className="orb w-[520px] h-[520px] bg-brand-orange -bottom-32 -left-20 opacity-20 dark:opacity-25" />
+      <div className="orb w-[400px] h-[400px] bg-brand-blue bottom-1/3 left-1/4 opacity-15 dark:opacity-20" />
 
       {/* R3F Blob — top-right corner */}
       <div className="absolute top-0 right-0 w-[min(55vw,600px)] h-[min(55vw,600px)] pointer-events-none opacity-90">
@@ -135,7 +138,7 @@ export function Hero() {
 
         {/* Google countdown */}
         <div ref={countdownRef} className="opacity-0 mb-10">
-          <div className="inline-flex items-center gap-5 border border-[var(--border)] rounded-2xl px-5 py-4 backdrop-blur-sm">
+          <div className="inline-flex items-center gap-5 glass rounded-2xl px-5 py-4">
             {/* Noogler portrait avatar */}
             <div className="relative shrink-0 w-16 h-16 md:w-20 md:h-20 rounded-xl overflow-hidden border-2 border-brand-orange/40">
               {/* Fallback initials */}
@@ -183,7 +186,7 @@ export function Hero() {
             <a
               href="#contact"
               data-cursor-arrow
-              className="inline-flex items-center gap-2 border border-[var(--border)] text-[var(--fg)] font-display font-bold px-7 py-3.5 rounded-full hover:border-brand-blue hover:text-brand-blue transition-colors duration-200"
+              className="inline-flex items-center gap-2 glass rounded-full text-[var(--fg)] font-display font-bold px-7 py-3.5 hover:glass-hover hover:text-brand-blue transition-all duration-200"
               style={{ fontSize: "clamp(0.85rem, 1.5vw, 1rem)" }}
             >
               Get in Touch

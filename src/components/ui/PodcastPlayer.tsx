@@ -190,7 +190,7 @@ function StickyPlayer({
       animate={{ y: 0, opacity: 1 }}
       exit={{ y: 100, opacity: 0 }}
       transition={{ type: "spring", stiffness: 320, damping: 32 }}
-      className="fixed bottom-0 left-0 right-0 z-[5000] bg-brand-blue-deep border-t border-white/10 shadow-[0_-8px_32px_rgba(0,0,0,0.4)]"
+      className="fixed bottom-0 left-0 right-0 z-[5000] bg-brand-blue-deep/90 backdrop-blur-xl border-t border-white/10 shadow-[0_-8px_40px_rgba(0,0,0,0.5)]"
     >
       {/* Seek bar — top edge */}
       <div className="relative h-1 w-full bg-white/10 group cursor-pointer">

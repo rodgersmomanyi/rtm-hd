@@ -141,19 +141,21 @@ export function Footer() {
 
           {/* Clocks */}
           <div className="flex flex-col justify-end gap-2">
-            <p className="eyebrow text-off-white/30 mb-2">LOCAL TIME</p>
-            <div className="grid grid-cols-2 gap-x-8 gap-y-5">
-              <LocalClock timezone="Africa/Nairobi" label="NAIROBI" />
-              <LocalClock timezone="Europe/Helsinki" label="HAMINA" />
-              <LocalClock timezone="Asia/Shanghai" label="HANGZHOU" />
-              <LocalClock timezone="Australia/Melbourne" label="MELBOURNE" />
-              <LocalClock timezone="Pacific/Auckland" label="AUCKLAND" />
+            <p className="eyebrow text-off-white/30 mb-3">LOCAL TIME</p>
+            <div className="glass-dark rounded-2xl p-5">
+              <div className="grid grid-cols-2 gap-x-8 gap-y-5">
+                <LocalClock timezone="Africa/Nairobi" label="NAIROBI" />
+                <LocalClock timezone="Europe/Helsinki" label="HAMINA" />
+                <LocalClock timezone="Asia/Shanghai" label="HANGZHOU" />
+                <LocalClock timezone="Australia/Melbourne" label="MELBOURNE" />
+                <LocalClock timezone="Pacific/Auckland" label="AUCKLAND" />
+              </div>
             </div>
           </div>
         </div>
 
         {/* Social icons row */}
-        <div className="flex flex-wrap gap-4 items-center mb-12">
+        <div className="glass-dark rounded-2xl px-6 py-4 mb-12 flex flex-wrap gap-4 items-center">
           {socials.map((s) => (
             <MagneticButton key={s.label}>
               <a
