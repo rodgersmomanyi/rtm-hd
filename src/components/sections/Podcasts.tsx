@@ -52,8 +52,8 @@ function EpisodeRow({ ep, index }: { ep: (typeof podcastEpisodes)[number]; index
       transition={{ duration: 0.4, delay: Math.min(index * 0.04, 0.3) }}
       className={`group rounded-2xl transition-all duration-300 overflow-hidden ${
         isActive
-          ? "glass border-brand-orange/50 bg-brand-orange/5 shadow-[0_4px_24px_rgba(255,106,26,0.12)]"
-          : "glass hover:glass-hover"
+          ? "glass border border-brand-orange/60 shadow-[0_4px_24px_rgba(255,106,26,0.15)]"
+          : "bg-[var(--bg)] border border-[var(--border)] hover:border-brand-orange/40 hover:shadow-[var(--glass-shadow)]"
       }`}
     >
       <div className="flex items-start gap-4 p-4 md:p-5">
@@ -215,7 +215,7 @@ export function Podcasts() {
           </div>
 
           {/* Podcast brand badge */}
-          <div className="flex items-center gap-4 px-5 py-4 rounded-2xl glass shrink-0">
+          <div className="flex items-center gap-4 px-5 py-4 rounded-2xl border border-[var(--border)] bg-[var(--bg)] shrink-0">
             <div className="w-12 h-12 rounded-xl bg-brand-orange flex items-center justify-center shrink-0">
               <Mic size={22} className="text-white" />
             </div>
@@ -247,7 +247,7 @@ export function Podcasts() {
               className={`px-4 py-2 rounded-full font-display font-bold transition-all duration-200 ${
                 activeSeason === season
                   ? "bg-brand-orange text-white shadow-[0_4px_20px_rgba(255,106,26,0.35)]"
-                  : "glass text-[var(--fg)] opacity-60 hover:opacity-100 hover:border-brand-orange hover:text-brand-orange"
+                  : "border border-[var(--border)] text-[var(--fg)] opacity-60 hover:opacity-100 hover:border-brand-orange hover:text-brand-orange bg-[var(--bg)]"
               }`}
               style={{ fontSize: "0.8rem", letterSpacing: "0.02em" }}
             >
@@ -293,7 +293,7 @@ export function Podcasts() {
               href="https://feeds.simplecast.com/uq015LLC"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 glass text-[var(--fg)] font-display font-bold px-6 py-3 rounded-full hover:glass-hover hover:text-brand-orange transition-all duration-200"
+              className="inline-flex items-center gap-2 border border-[var(--border)] bg-[var(--bg)] text-[var(--fg)] font-display font-bold px-6 py-3 rounded-full hover:border-brand-orange hover:text-brand-orange transition-all duration-200"
               style={{ fontSize: "0.88rem" }}
             >
               RSS Feed ↗

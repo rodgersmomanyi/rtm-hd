@@ -46,7 +46,7 @@ export function Contact() {
   };
 
   const inputClass =
-    "w-full glass rounded-xl px-5 py-3.5 text-[var(--fg)] placeholder:text-[var(--fg)]/40 focus:outline-none focus:border-brand-orange focus:bg-[var(--glass-bg-hover)] transition-all duration-200";
+    "w-full bg-[var(--bg)] border border-[var(--border)] rounded-xl px-5 py-3.5 text-[var(--fg)] placeholder:text-[var(--fg)]/40 focus:outline-none focus:border-brand-orange focus:ring-1 focus:ring-brand-orange/30 transition-all duration-200";
 
   return (
     <section

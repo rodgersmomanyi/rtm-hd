@@ -68,7 +68,7 @@ export function Skills() {
               viewport={{ once: true }}
               transition={{ duration: 0.3, delay: i * 0.025 }}
               whileHover={{ y: -3, color: "#FF6A1A" }}
-              className="px-4 py-2 rounded-full glass font-display font-bold text-[var(--fg)] hover:glass-hover hover:text-brand-orange transition-all duration-200"
+              className="px-4 py-2 rounded-full border border-[var(--border)] bg-[var(--bg)] font-display font-bold text-[var(--fg)] hover:border-brand-orange hover:text-brand-orange hover:shadow-[var(--glass-shadow)] transition-all duration-200"
               style={{ fontSize: "clamp(0.75rem, 1.5vw, 0.9rem)", letterSpacing: "0.04em" }}
             >
               {skill}
