@@ -4,6 +4,7 @@ import { Experience } from "@/components/sections/Experience";
 import { Marquee } from "@/components/ui/Marquee";
 import { Projects } from "@/components/sections/Projects";
 import { YouTube } from "@/components/sections/YouTube";
+import { Podcasts } from "@/components/sections/Podcasts";
 import { Skills } from "@/components/sections/Skills";
 import { Contact } from "@/components/sections/Contact";
 import { Footer } from "@/components/layout/Footer";
@@ -54,6 +55,7 @@ export default function Home() {
 
       <Projects />
       <YouTube />
+      <Podcasts />
       <Skills />
       <Contact />
       <Footer />

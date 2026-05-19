@@ -7,6 +7,7 @@ import { Cursor } from "@/components/layout/Cursor";
 import { ScrollProgress } from "@/components/ui/ScrollProgress";
 import { Nav } from "@/components/layout/Nav";
 import { IntroOverlay } from "@/components/layout/IntroOverlay";
+import { PodcastPlayerProvider } from "@/components/ui/PodcastPlayer";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -79,11 +80,13 @@ export default function RootLayout({
       <body>
         <ThemeProvider>
           <LenisProvider>
-            <IntroOverlay />
-            <ScrollProgress />
-            <Cursor />
-            <Nav />
-            {children}
+            <PodcastPlayerProvider>
+              <IntroOverlay />
+              <ScrollProgress />
+              <Cursor />
+              <Nav />
+              {children}
+            </PodcastPlayerProvider>
           </LenisProvider>
         </ThemeProvider>
       </body>
