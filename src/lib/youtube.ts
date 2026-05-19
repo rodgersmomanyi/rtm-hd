@@ -6,49 +6,57 @@ export interface VideoCard {
   publishedAt?: string;
 }
 
-// Static fallback — replace with real video IDs when available
+// Static fallback — Google "Where the Internet Lives" playlist
+// Source: https://www.youtube.com/playlist?list=PL590L5WQmH8dLLdbnJ775gPNvMeVWHLxT
 export const featuredVideos: VideoCard[] = [
   {
-    id: "dQw4w9WgXcQ",
-    title: "KPLC Smart Grid Backbone — Deployment Walkthrough",
-    thumbnail: "https://i.ytimg.com/vi/dQw4w9WgXcQ/maxresdefault.jpg",
-    viewCount: "12K",
-    publishedAt: "2026-03-10",
+    id: "okxUpjDOd1w",
+    title: "The Era of AI Innovation | Where the Internet Lives",
+    thumbnail: "https://i.ytimg.com/vi/okxUpjDOd1w/maxresdefault.jpg",
+    publishedAt: "2024-01-01",
   },
   {
-    id: "dQw4w9WgXcQ",
-    title: "BGP at Scale: 300G of Optimised ISP Traffic",
-    thumbnail: "https://i.ytimg.com/vi/dQw4w9WgXcQ/maxresdefault.jpg",
-    viewCount: "8.4K",
-    publishedAt: "2026-02-15",
+    id: "7hnvRBjuCW8",
+    title: "Farming for the Future | Where the Internet Lives",
+    thumbnail: "https://i.ytimg.com/vi/7hnvRBjuCW8/maxresdefault.jpg",
+    publishedAt: "2024-01-01",
   },
   {
-    id: "dQw4w9WgXcQ",
-    title: "Huawei NetEngine 8000 — Segment Routing Lab",
-    thumbnail: "https://i.ytimg.com/vi/dQw4w9WgXcQ/maxresdefault.jpg",
-    viewCount: "5.1K",
-    publishedAt: "2026-01-20",
+    id: "vFe-FrZSAKo",
+    title: "Coding the Future | Where the Internet Lives",
+    thumbnail: "https://i.ytimg.com/vi/vFe-FrZSAKo/maxresdefault.jpg",
+    publishedAt: "2024-01-01",
   },
   {
-    id: "dQw4w9WgXcQ",
-    title: "From ISP Core to Google Data Center — My Journey",
-    thumbnail: "https://i.ytimg.com/vi/dQw4w9WgXcQ/maxresdefault.jpg",
-    viewCount: "21K",
-    publishedAt: "2026-04-01",
+    id: "QdRfaMRjzvw",
+    title: "Leaps in Logistics | Where the Internet Lives",
+    thumbnail: "https://i.ytimg.com/vi/QdRfaMRjzvw/maxresdefault.jpg",
+    publishedAt: "2024-01-01",
   },
   {
-    id: "dQw4w9WgXcQ",
-    title: "Python Automation for Network Engineers (Ansible + Netmiko)",
-    thumbnail: "https://i.ytimg.com/vi/dQw4w9WgXcQ/maxresdefault.jpg",
-    viewCount: "9.8K",
-    publishedAt: "2025-12-05",
+    id: "jiGDzy0sxOI",
+    title: "Supercharging Creativity | Where the Internet Lives",
+    thumbnail: "https://i.ytimg.com/vi/jiGDzy0sxOI/maxresdefault.jpg",
+    publishedAt: "2024-01-01",
   },
   {
-    id: "dQw4w9WgXcQ",
-    title: "DWDM Fundamentals — Optical Networking Explained",
-    thumbnail: "https://i.ytimg.com/vi/dQw4w9WgXcQ/maxresdefault.jpg",
-    viewCount: "14.2K",
-    publishedAt: "2025-10-18",
+    id: "2hibjbZDys4",
+    title: "Where the Internet Lives S4E1 | Data on Fire",
+    thumbnail: "https://i.ytimg.com/vi/2hibjbZDys4/maxresdefault.jpg",
+    publishedAt: "2023-01-01",
+  },
+  // kept for reference — extra videos available from the playlist
+  {
+    id: "wfAFv6ikmkE",
+    title: "How Canal Water Cools Our Dutch Data Center",
+    thumbnail: "https://i.ytimg.com/vi/wfAFv6ikmkE/maxresdefault.jpg",
+    publishedAt: "2023-01-01",
+  },
+  {
+    id: "o-8WCNb3BQY",
+    title: "Mapping New Medicines | Where the Internet Lives",
+    thumbnail: "https://i.ytimg.com/vi/o-8WCNb3BQY/maxresdefault.jpg",
+    publishedAt: "2023-01-01",
   },
 ];
 
