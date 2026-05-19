@@ -3,7 +3,7 @@
 import { useRef, useState } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import { MagneticButton } from "@/components/ui/MagneticButton";
-import { Mail, Phone, MapPin, CheckCircle, AlertCircle } from "lucide-react";
+import { Mail, MapPin, CheckCircle, AlertCircle } from "lucide-react";
 
 type FormState = "idle" | "loading" | "success" | "error";
 
@@ -99,25 +99,7 @@ export function Contact() {
                 </div>
               </a>
 
-              <a
-                href="tel:+254711411020"
-                className="flex items-center gap-4 group"
-              >
-                <div className="w-10 h-10 rounded-full bg-brand-orange/10 flex items-center justify-center shrink-0 group-hover:bg-brand-orange/20 transition-colors">
-                  <Phone size={18} className="text-brand-orange" />
-                </div>
-                <div>
-                  <div className="eyebrow text-[var(--fg)] opacity-40 mb-0.5">Phone</div>
-                  <div
-                    className="font-display font-bold text-[var(--fg)] group-hover:text-brand-orange transition-colors"
-                    style={{ fontSize: "1rem" }}
-                  >
-                    +254 711 411 020
-                  </div>
-                </div>
-              </a>
-
-              <div className="flex items-center gap-4">
+<div className="flex items-center gap-4">
                 <div className="w-10 h-10 rounded-full bg-brand-orange/10 flex items-center justify-center shrink-0">
                   <MapPin size={18} className="text-brand-orange" />
                 </div>
