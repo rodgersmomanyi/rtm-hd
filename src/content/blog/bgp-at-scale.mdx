@@ -1,0 +1,90 @@
+---
+title: "BGP at Scale: Lessons from 300G of Optimised Traffic"
+date: "2026-04-18"
+excerpt: "After years of running a BGP full-table ISP core, here's what I wish I'd known at the start — from prefix hygiene to convergence time and the tools that saved us at 3am."
+tags: ["BGP", "Networking", "ISP", "Routing", "Technical"]
+coverImage: "/blog/bgp-at-scale.jpg"
+---
+
+# BGP at Scale: Lessons from 300G of Optimised Traffic
+
+Running BGP in a lab is one thing. Running it on a production core that carries 300G of live ISP traffic, peering with four upstream providers, and serving enterprise customers on strict SLAs is a different sport entirely.
+
+Here's what I've learned — the hard way — over five years of BGP operations in a multi-county Kenyan ISP.
+
+## Lesson 1: Prefix Hygiene Is Non-Negotiable
+
+The fastest way to have a bad night is loose prefix filtering. Every BGP peer — upstream, peer, or customer — should have an explicit prefix list or route filter. Every. Single. One.
+
+In practice this means:
+
+1. **Customer prefix lists** tied to their contracted prefixes. If a customer announces something outside their allocation, it drops. No exceptions.
+2. **IRR-based filtering** for BGP peers using a tool like [BGPQ4](https://github.com/bgp/bgpq4) to generate prefix lists from route registry data.
+3. **RPKI ROV** at the edge — route origin validation. This has become table-stakes. If you're not doing it in 2026, fix that.
+
+On our core, RPKI ROV alone has dropped several hundred invalid route announcements per month that would otherwise have been redistributed internally.
+
+## Lesson 2: Convergence Time Is a Product Feature
+
+Your customers don't care about BGP. They care about whether their application works. But they feel every second of BGP convergence as downtime.
+
+Tune your timers. `keepalive 10 holdtime 30` is a common starting point, but for links where you control both ends, go tighter: `keepalive 3 holdtime 9`.
+
+BFD (Bidirectional Forwarding Detection) is your friend here — especially on links between PE and CE routers. BFD can detect a link failure in milliseconds and trigger BGP session teardown before the holdtime expires. On Juniper MX and Huawei NE8000, we pair BFD with BGP graceful restart for upstream sessions.
+
+The result: sub-second failover on links that previously took 30+ seconds to converge. That's the difference between an incident and a transparent failover.
+
+## Lesson 3: Route Maps Are Artwork (That Can Kill You)
+
+BGP route maps / routing policies are powerful. They're also the source of some of the most subtle and catastrophic bugs I've seen in production.
+
+Two rules I now live by:
+
+**Principle of least permission in policies**: every policy should end with an explicit `deny all` (or equivalent). Implicit permits are for folk who enjoy 3am calls.
+
+**Test before commit**: Juniper's `commit confirmed` is underrated. Huawei has `commit trial` with a rollback timer. Use them. A policy that looks correct in `display bgp routing-table` can still be wrong in ways that only manifest after a prefix change upstream.
+
+## Lesson 4: Monitor What Matters
+
+For a BGP core, the minimum viable monitoring stack:
+
+- **Per-peer prefix counts** with alerting on significant drops (e.g., >5% reduction from a peer = alert immediately)
+- **BGP session state** — yes, basic, but I've seen NOC teams miss flapping sessions because the alert was misconfigured
+- **AS path analysis** for loop detection
+- **Traffic volume per prefix block** — useful for detecting route leaks before your upstream calls you
+
+We run Zabbix for operational alerting and a custom Python script that feeds BGP table snapshots into Elasticsearch for historical analysis. When an incident happens at 3am, you want to be able to say *"the route change happened at 02:47:32"* — not *"sometime last night."*
+
+## Lesson 5: Document Your Peers Like Your Life Depends on It
+
+When a critical upstream drops at 2am, the on-call engineer needs to know:
+- Who to call
+- What the failover path is
+- What the expected traffic shift looks like
+
+That means runbooks. Every BGP peer gets:
+- Peer IP, AS number, MD5 key location, contact details
+- Prefix filter location in your config management system
+- Known quirks (e.g., "this peer sends communities we strip at import")
+- Failover sequence
+
+A good runbook takes 30 minutes to write. A missing runbook costs hours at the worst moment.
+
+## Tools I Reach For
+
+| Tool | Use |
+|------|-----|
+| `bgpq4` | IRR-based prefix list generation |
+| Zabbix | Operational alerting |
+| FRRouting | Lab testing (runs on Linux VMs) |
+| RIPE RIS | BGP route visibility / leak detection |
+| Looking Glass | Customer-facing prefix verification |
+| Ansible | Config push + policy validation |
+
+---
+
+BGP is simple in concept and infinitely deep in practice. The engineers who are great at it aren't the ones who memorise RFCs — they're the ones who've been burned by bad filters, slow convergence, and undocumented peers, and who built systems to make sure it doesn't happen again.
+
+If you have questions about any of this, drop a comment or reach out via the [contact page](/contact).
+
+*Next post: IS-IS vs OSPF in a national ISP backbone — when the textbook answer is wrong.*
