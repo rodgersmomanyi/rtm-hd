@@ -149,27 +149,24 @@ function EpisodeRow({ ep, index }: { ep: (typeof podcastEpisodes)[number]; index
         </div>
       </div>
 
-      {/* Active waveform bar */}
+      {/* Active waveform — fixed height, scaleY avoids layout shift */}
       {isActive && (
-        <div className="px-5 pb-3 flex items-center gap-1.5">
+        <div className="px-5 pb-3 flex items-end gap-1.5 overflow-hidden" style={{ height: "2rem" }}>
           {[...Array(5)].map((_, i) => (
             <motion.div
               key={i}
-              className="w-0.5 rounded-full bg-brand-orange"
-              animate={
-                isPlaying
-                  ? { height: ["4px", `${8 + i * 4}px`, "4px"] }
-                  : { height: "4px" }
-              }
+              className="w-0.5 rounded-full bg-brand-orange origin-bottom"
+              style={{ height: `${6 + i * 4}px` }}
+              animate={isPlaying ? { scaleY: [0.25, 1, 0.25] } : { scaleY: 0.25 }}
               transition={{
-                duration: 0.7 + i * 0.1,
-                repeat: Infinity,
+                duration: 0.65 + i * 0.1,
+                repeat: isPlaying ? Infinity : 0,
                 ease: "easeInOut",
-                delay: i * 0.12,
+                delay: i * 0.1,
               }}
             />
           ))}
-          <span className="ml-2 eyebrow text-brand-orange" style={{ fontSize: "0.6rem" }}>
+          <span className="ml-2 eyebrow text-brand-orange self-center" style={{ fontSize: "0.6rem" }}>
             {isPlaying ? "NOW PLAYING" : "PAUSED"}
           </span>
         </div>
