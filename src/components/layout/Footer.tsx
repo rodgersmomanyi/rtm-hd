@@ -140,10 +140,13 @@ export function Footer() {
           </div>
 
           {/* Clocks */}
-          <div className="flex flex-col justify-end gap-6">
-            <div className="flex gap-8">
+          <div className="flex flex-col justify-end gap-2">
+            <p className="eyebrow text-off-white/30 mb-2">LOCAL TIME</p>
+            <div className="grid grid-cols-2 gap-x-8 gap-y-5">
               <LocalClock timezone="Africa/Nairobi" label="NAIROBI" />
               <LocalClock timezone="Europe/Helsinki" label="HAMINA" />
+              <LocalClock timezone="Asia/Shanghai" label="HANGZHOU" />
+              <LocalClock timezone="Australia/Melbourne" label="MELBOURNE" />
             </div>
           </div>
         </div>
