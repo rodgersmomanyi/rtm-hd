@@ -1,11 +1,43 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 
 const TARGET = new Date("2026-07-27T00:00:00+03:00").getTime();
 
 function pad(n: number) {
   return String(n).padStart(2, "0");
+}
+
+/** Flips the digit in place when the value changes */
+function TickDigit({ value, large }: { value: string; large?: boolean }) {
+  return (
+    <div
+      className="relative overflow-hidden tabular-nums font-display font-black text-brand-orange"
+      style={{
+        fontSize: large
+          ? "clamp(2rem, 5vw, 3.5rem)"
+          : "clamp(1.4rem, 3.5vw, 2.6rem)",
+        lineHeight: 1,
+        letterSpacing: "-0.04em",
+        minWidth: large ? "2.4ch" : "2ch",
+        textAlign: "center",
+      }}
+    >
+      <AnimatePresence mode="popLayout" initial={false}>
+        <motion.span
+          key={value}
+          initial={{ y: "-60%", opacity: 0 }}
+          animate={{ y: "0%", opacity: 1 }}
+          exit={{ y: "60%", opacity: 0 }}
+          transition={{ duration: 0.2, ease: "easeInOut" }}
+          className="block"
+        >
+          {value}
+        </motion.span>
+      </AnimatePresence>
+    </div>
+  );
 }
 
 export function CountdownClock() {
@@ -23,8 +55,8 @@ export function CountdownClock() {
         setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
         return;
       }
-      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const days    = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours   = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
       const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
       const seconds = Math.floor((diff % (1000 * 60)) / 1000);
       setTimeLeft({ days, hours, minutes, seconds });
@@ -39,7 +71,7 @@ export function CountdownClock() {
     return <div className="h-16" />;
   }
 
-  if (timeLeft.days <= 0 && timeLeft.hours <= 0) {
+  if (timeLeft.days <= 0 && timeLeft.hours <= 0 && timeLeft.minutes <= 0 && timeLeft.seconds <= 0) {
     return (
       <div className="eyebrow text-brand-orange">
         NOOGLER JOURNEY HAS BEGUN 🚀
@@ -47,35 +79,47 @@ export function CountdownClock() {
     );
   }
 
-  const parts = [
-    { value: pad(timeLeft.days), label: "DAYS" },
-    { value: pad(timeLeft.hours), label: "HRS" },
-    { value: pad(timeLeft.minutes), label: "MIN" },
-  ];
+  const Colon = ({ dim }: { dim?: boolean }) => (
+    <span
+      className={`font-black text-brand-orange self-end mb-0.5 select-none ${dim ? "opacity-40" : ""}`}
+      style={{ fontSize: "clamp(1.5rem, 3vw, 2.5rem)" }}
+      aria-hidden="true"
+    >
+      :
+    </span>
+  );
 
   return (
-    <div className="flex items-end gap-2 md:gap-3">
-      {parts.map((part, i) => (
-        <div key={part.label} className="flex items-end gap-2 md:gap-3">
-          <div className="text-center">
-            <div
-              className="font-display font-black text-brand-orange tabular-nums"
-              style={{ fontSize: "clamp(2rem, 5vw, 3.5rem)", lineHeight: 1, letterSpacing: "-0.04em" }}
-            >
-              {part.value}
-            </div>
-            <div className="eyebrow opacity-50 mt-1">{part.label}</div>
-          </div>
-          {i < parts.length - 1 && (
-            <span
-              className="text-brand-orange font-black mb-1"
-              style={{ fontSize: "clamp(1.5rem, 3vw, 2.5rem)" }}
-            >
-              :
-            </span>
-          )}
-        </div>
-      ))}
+    <div className="flex items-end gap-1.5 md:gap-2">
+      {/* Days */}
+      <div className="text-center">
+        <TickDigit value={pad(timeLeft.days)} large />
+        <div className="eyebrow opacity-50 mt-1">DAYS</div>
+      </div>
+
+      <Colon />
+
+      {/* Hours */}
+      <div className="text-center">
+        <TickDigit value={pad(timeLeft.hours)} large />
+        <div className="eyebrow opacity-50 mt-1">HRS</div>
+      </div>
+
+      <Colon />
+
+      {/* Minutes */}
+      <div className="text-center">
+        <TickDigit value={pad(timeLeft.minutes)} large />
+        <div className="eyebrow opacity-50 mt-1">MIN</div>
+      </div>
+
+      <Colon dim />
+
+      {/* Seconds — slightly smaller to give hierarchy */}
+      <div className="text-center">
+        <TickDigit value={pad(timeLeft.seconds)} />
+        <div className="eyebrow opacity-50 mt-1">SEC</div>
+      </div>
     </div>
   );
 }
