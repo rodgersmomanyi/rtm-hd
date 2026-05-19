@@ -20,7 +20,7 @@ jobs:
           script: |
             cd /var/www/rtm-hd
 
-            git pull origin main
+            git pull origin master
 
             npm install
 
