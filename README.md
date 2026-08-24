@@ -28,7 +28,9 @@ Copy `.env.example` → `.env.local` and fill in:
 |---|---|---|
 | `YOUTUBE_API_KEY` | Optional | YouTube Data API v3 key. Without it the static `featuredVideos` fallback is used. |
 | `YOUTUBE_CHANNEL_ID` | Optional | Your channel ID (e.g. `UCxxxxxxxx`). Required alongside `YOUTUBE_API_KEY`. |
-| `RESEND_API_KEY` | Optional | [Resend](https://resend.com) key for contact form emails. Without it, messages are logged to console. |
+| `RESEND_API_KEY` | **Required in production** | [Resend](https://resend.com) key for contact form emails. In dev, messages are logged to the console instead. In production, if this is unset the form returns 503 and points the sender at LinkedIn rather than silently dropping the message. |
+| `CONTACT_FROM` | Optional | Sender address. Defaults to Resend's shared sandbox (`onboarding@resend.dev`) — poor deliverability, and it can only send to your own account address. Set this to an address on a domain verified in Resend. |
+| `CONTACT_TO` | Optional | Delivery address. Defaults to `rodgers.momanyi@outlook.com`. |
 
 ### Getting a YouTube API key
 1. Go to [Google Cloud Console](https://console.cloud.google.com)
@@ -51,19 +53,24 @@ Copy `.env.example` → `.env.local` and fill in:
 
 ---
 
-## Deploy to Vercel
+## Deployment
+
+The site is **self-hosted on a VPS** behind nginx, run under pm2 — not Vercel.
+
+Pushing to `master` triggers [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml), which
+SSHes into the box and runs:
 
 ```bash
-npx vercel link
-npx vercel env add YOUTUBE_API_KEY
-npx vercel env add YOUTUBE_CHANNEL_ID
-npx vercel env add RESEND_API_KEY
-npx vercel --prod
+cd /var/www/rtm-hd && git pull origin master && npm install && npm run build && pm2 restart rtm-hd
 ```
 
-Or connect the repo to [vercel.com](https://vercel.com) for auto-deploys. Framework detection handles everything — no `vercel.json` needed.
+Host, user and SSH key come from the `HOST`, `USERNAME` and `SSH_KEY` repo secrets.
 
-Point your DNS A record for `rtmhd.tech` to Vercel, then add the domain in the dashboard.
+> **Every push to `master` deploys straight to production.** There is no CI gate, health check or
+> rollback — if `npm run build` fails, the live site can be left serving a broken build. Verify
+> locally with `npm run build` before pushing.
+
+Environment variables live in `.env.local` on the server, not in the repo.
 
 ---
 

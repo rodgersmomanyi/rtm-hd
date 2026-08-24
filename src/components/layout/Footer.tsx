@@ -97,9 +97,9 @@ const socials = [
 
 const footerMarqueeItems = [
   "AVAILABLE FOR COLLABORATIONS",
-  "CURRENTLY IN NAIROBI",
-  "INCOMING NOOGLER",
-  "GOOGLE HAMINA · FINLAND 2026",
+  "NAIROBI → HAMINA",
+  "NOOGLER",
+  "GOOGLE HAMINA · FINLAND",
   "NETWORK ENGINEERING",
   "OPEN SOURCE ADVOCATE",
 ];
@@ -134,7 +134,7 @@ export function Footer() {
               className="text-off-white/50 mt-4 max-w-sm"
               style={{ fontSize: "0.95rem", lineHeight: 1.6 }}
             >
-              Senior Network Engineer. Incoming Noogler.
+              Network Engineer. Noogler.
               Building resilient networks from Nairobi to the world.
             </p>
           </div>
@@ -187,7 +187,7 @@ export function Footer() {
         {/* Bottom bar */}
         <div className="border-t border-off-white/10 pt-8 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
           <p className="eyebrow text-off-white/30">
-            Built in Nairobi · Heading to Hamina · © 2026 Rodgers T. Momanyi
+            Built in Nairobi · Now in Hamina · © 2026 Rodgers T. Momanyi
           </p>
           <div className="flex gap-6">
             <a href="/blog" className="eyebrow text-off-white/30 hover:text-off-white/70 transition-colors">

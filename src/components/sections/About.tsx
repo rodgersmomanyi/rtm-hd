@@ -63,7 +63,7 @@ export function About() {
             {!imgError && (
               <Image
                 src="/rodgers.jpg"
-                alt="Rodgers T. Momanyi — Senior Network Engineer, Incoming Google Noogler"
+                alt="Rodgers T. Momanyi — Network Engineer and Google Data Center Technician III"
                 fill
                 className="object-cover object-top z-10 group-hover:scale-[1.03] transition-transform duration-700"
                 onError={() => setImgError(true)}
@@ -78,12 +78,12 @@ export function About() {
             <div className="absolute bottom-5 left-5 right-5 bg-brand-blue-deep/90 backdrop-blur-md rounded-xl p-4 z-30 border border-white/10">
               <div className="flex items-center gap-2 mb-1">
                 <span className="text-lg">🎓</span>
-                <div className="eyebrow text-brand-orange">Incoming Noogler</div>
+                <div className="eyebrow text-brand-orange">Noogler</div>
               </div>
               <div className="font-display font-bold text-off-white" style={{ fontSize: "1.05rem", letterSpacing: "-0.01em" }}>
                 Google · Hamina Data Center · Finland 🇫🇮
               </div>
-              <div className="eyebrow text-off-white opacity-50 mt-1">Data Center Technician III · July 2026</div>
+              <div className="eyebrow text-off-white opacity-50 mt-1">Data Center Technician III · Since July 2026</div>
             </div>
           </motion.div>
 
@@ -100,11 +100,10 @@ export function About() {
 
             <div className="space-y-5 text-[var(--fg)]" style={{ fontSize: "1.05rem", lineHeight: 1.65, opacity: 0.85 }}>
               <p>
-                Strategic Network Core Systems &amp; Solutions Manager with 8+ years delivering
-                resilient ISP, enterprise, and cloud networks. I lead a 19-member multidisciplinary
-                team across Network Engineering, Cybersecurity, Systems, Development, and Data —
-                driving 99.99% service availability, infrastructure scalability, and secure service
-                delivery.
+                Network engineer with 8+ years delivering resilient ISP, enterprise, and cloud
+                networks. I led a 19-member multidisciplinary team across Network Engineering,
+                Cybersecurity, Systems, Development, and Data — driving 99.99% service
+                availability, infrastructure scalability, and secure service delivery.
               </p>
               <p>
                 I blend deep technical expertise with senior leadership, SLA ownership, automation,
@@ -114,9 +113,9 @@ export function About() {
                 that power SaaS and SECaaS solutions.
               </p>
               <p>
-                In July 2026 I&apos;m joining Google as a Data Center Technician III at the LPP Hamina
-                Data Center in Finland — bringing African ISP-scale operations experience into
-                hyperscale infrastructure.
+                Since July 2026 I&apos;ve been at Google as a Data Center Technician III at the LPP
+                Hamina Data Center in Finland — bringing African ISP-scale operations experience
+                into hyperscale infrastructure.
               </p>
             </div>
 

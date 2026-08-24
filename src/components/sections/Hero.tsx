@@ -148,7 +148,7 @@ export function Hero() {
               {!imgError && (
                 <Image
                   src="/rodgers.jpg"
-                  alt="Rodgers — Incoming Noogler"
+                  alt="Rodgers T. Momanyi"
                   fill
                   className="object-cover object-top z-10"
                   onError={() => setImgError(true)}
@@ -160,7 +160,7 @@ export function Hero() {
 
             <div>
               <div className="eyebrow text-brand-orange mb-2">
-                INCOMING NOOGLER — DATA CENTER TECHNICIAN III
+                NOOGLER — DATA CENTER TECHNICIAN III
               </div>
               <div className="eyebrow text-[var(--fg)] opacity-60 mb-4">
                 GOOGLE LPP · HAMINA DATA CENTER FSA1 · HAMINA, FINLAND 🇫🇮

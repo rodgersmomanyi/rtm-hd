@@ -4,7 +4,10 @@ export interface ExperienceEntry {
   company: string;
   location: string;
   period: string;
+  /** Role that has not started yet — renders a pulsing "FUTURE" badge. */
   isFuture?: boolean;
+  /** Role held right now — renders a pulsing "CURRENT" badge. */
+  isCurrent?: boolean;
   bullets: string[];
   tags: string[];
 }
@@ -15,10 +18,10 @@ export const experience: ExperienceEntry[] = [
     role: "Data Center Technician III",
     company: "Google",
     location: "LPP Hamina Data Center · Hamina, Finland 🇫🇮",
-    period: "Starts July 27, 2026",
-    isFuture: true,
+    period: "July 2026 – Present",
+    isCurrent: true,
     bullets: [
-      "Joining Google's hyperscale infrastructure team at the Hamina data center in Finland.",
+      "Part of Google's hyperscale infrastructure team at the Hamina data center in Finland.",
       "Bringing 8+ years of African ISP-scale operations experience into one of the world's most advanced data center campuses.",
       "Focus on physical layer reliability, server lifecycle management, and data center operations excellence.",
     ],
@@ -29,7 +32,7 @@ export const experience: ExperienceEntry[] = [
     role: "Technical Program Manager | Network Core Systems & Solutions",
     company: "Vilcom Networks Limited",
     location: "Nairobi, Kenya",
-    period: "Sept 2024 – Present",
+    period: "Sept 2024 – July 2026",
     bullets: [
       "Lead a 19-member multidisciplinary team across Network Engineering, Cybersecurity, Systems, Development, and Data functions.",
       "Maintain 99.99% service availability across the ISP core and transmission infrastructure.",

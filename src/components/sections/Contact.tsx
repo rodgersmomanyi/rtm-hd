@@ -12,11 +12,13 @@ export function Contact() {
   const isInView = useInView(headRef, { once: true, margin: "-80px" });
   const [formState, setFormState] = useState<FormState>("idle");
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [formError, setFormError] = useState<string | null>(null);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setFormState("loading");
     setErrors({});
+    setFormError(null);
 
     const fd = new FormData(e.currentTarget);
     const body = {
@@ -36,6 +38,7 @@ export function Contact() {
 
       if (!res.ok) {
         if (data.errors) setErrors(data.errors);
+        if (data.error) setFormError(data.error);
         setFormState("error");
       } else {
         setFormState("success");
@@ -113,9 +116,9 @@ export function Contact() {
                     className="font-display font-bold text-[var(--fg)]"
                     style={{ fontSize: "1rem" }}
                   >
-                    Nairobi, Kenya → Hamina, Finland
+                    Hamina, Finland
                   </div>
-                  <div className="eyebrow text-[var(--fg)] opacity-40">July 2026</div>
+                  <div className="eyebrow text-[var(--fg)] opacity-40">Since July 2026</div>
                 </div>
               </div>
             </div>
@@ -235,9 +238,9 @@ export function Contact() {
                   </div>
 
                   {formState === "error" && !Object.keys(errors).length && (
-                    <div className="flex items-center gap-2 text-brand-orange text-sm">
+                    <div className="flex items-center gap-2 text-brand-orange text-sm" role="alert">
                       <AlertCircle size={16} />
-                      <span>Something went wrong. Please try again.</span>
+                      <span>{formError ?? "Something went wrong. Please try again."}</span>
                     </div>
                   )}
 

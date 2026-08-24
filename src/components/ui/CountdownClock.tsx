@@ -3,7 +3,8 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
-const TARGET = new Date("2026-07-27T00:00:00+03:00").getTime();
+/** Day one at Google — Hamina. Before this the clock counts down; after it, up. */
+const START = new Date("2026-07-27T00:00:00+03:00").getTime();
 
 function pad(n: number) {
   return String(n).padStart(2, "0");
@@ -42,6 +43,7 @@ function TickDigit({ value, large }: { value: string; large?: boolean }) {
 
 export function CountdownClock() {
   const [timeLeft, setTimeLeft] = useState<{
+    mode: "until" | "since";
     days: number;
     hours: number;
     minutes: number;
@@ -50,33 +52,52 @@ export function CountdownClock() {
 
   useEffect(() => {
     const calc = () => {
-      const diff = TARGET - Date.now();
-      if (diff <= 0) {
-        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
-        return;
+      const diff = START - Date.now();
+      const mode = diff > 0 ? "until" : "since";
+      const ms = Math.abs(diff);
+      const days    = Math.floor(ms / (1000 * 60 * 60 * 24));
+      const hours   = Math.floor((ms % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((ms % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((ms % (1000 * 60)) / 1000);
+      setTimeLeft({ mode, days, hours, minutes, seconds });
+    };
+
+    // Only tick while the tab is visible. Backgrounded tabs stall rAF, so the
+    // digit flip's exit animations never complete and the discarded spans pile
+    // up — one per second — until the tab is focused again.
+    let id: ReturnType<typeof setInterval> | undefined;
+
+    const start = () => {
+      if (id === undefined) id = setInterval(calc, 1000);
+    };
+    const stop = () => {
+      if (id !== undefined) {
+        clearInterval(id);
+        id = undefined;
       }
-      const days    = Math.floor(diff / (1000 * 60 * 60 * 24));
-      const hours   = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-      setTimeLeft({ days, hours, minutes, seconds });
+    };
+
+    const onVisibility = () => {
+      if (document.hidden) {
+        stop();
+      } else {
+        calc();
+        start();
+      }
     };
 
     calc();
-    const id = setInterval(calc, 1000);
-    return () => clearInterval(id);
+    if (!document.hidden) start();
+    document.addEventListener("visibilitychange", onVisibility);
+
+    return () => {
+      stop();
+      document.removeEventListener("visibilitychange", onVisibility);
+    };
   }, []);
 
   if (!timeLeft) {
     return <div className="h-16" />;
-  }
-
-  if (timeLeft.days <= 0 && timeLeft.hours <= 0 && timeLeft.minutes <= 0 && timeLeft.seconds <= 0) {
-    return (
-      <div className="eyebrow text-brand-orange">
-        NOOGLER JOURNEY HAS BEGUN 🚀
-      </div>
-    );
   }
 
   const Colon = ({ dim }: { dim?: boolean }) => (
@@ -90,7 +111,13 @@ export function CountdownClock() {
   );
 
   return (
-    <div className="flex items-end gap-1.5 md:gap-2">
+    <div>
+      <div className="eyebrow text-brand-orange mb-2">
+        {timeLeft.mode === "since"
+          ? "TIME AT GOOGLE HAMINA 🚀"
+          : "COUNTDOWN TO DAY ONE"}
+      </div>
+      <div className="flex items-end gap-1.5 md:gap-2">
       {/* Days */}
       <div className="text-center">
         <TickDigit value={pad(timeLeft.days)} large />
@@ -119,6 +146,7 @@ export function CountdownClock() {
       <div className="text-center">
         <TickDigit value={pad(timeLeft.seconds)} />
         <div className="eyebrow opacity-50 mt-1">SEC</div>
+      </div>
       </div>
     </div>
   );

@@ -26,16 +26,18 @@ export function TimelineItem({ entry, index }: TimelineItemProps) {
         transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1], delay: 0.05 }}
         style={{ gridColumn: isLeft ? 1 : 2 }}
         className={`glass-dark rounded-2xl p-6 md:p-8 transition-all duration-300 hover:glass-dark-hover hover:scale-[1.01] ${
-          entry.isFuture ? "border-brand-orange/30 bg-brand-orange/5" : ""
+          entry.isFuture || entry.isCurrent ? "border-brand-orange/30 bg-brand-orange/5" : ""
         }`}
       >
-        {entry.isFuture && (
+        {(entry.isFuture || entry.isCurrent) && (
           <div className="flex items-center gap-2 mb-4">
             <span className="relative flex h-3 w-3">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-orange opacity-75" />
               <span className="relative inline-flex rounded-full h-3 w-3 bg-brand-orange" />
             </span>
-            <span className="eyebrow text-brand-orange">FUTURE</span>
+            <span className="eyebrow text-brand-orange">
+              {entry.isFuture ? "FUTURE" : "CURRENT"}
+            </span>
           </div>
         )}
 

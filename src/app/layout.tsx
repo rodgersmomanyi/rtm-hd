@@ -25,11 +25,11 @@ const jetbrains = JetBrains_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "Rodgers T. Momanyi — RTM-HD | Network Engineer · Incoming Noogler",
+    default: "Rodgers T. Momanyi — RTM-HD | Network Engineer · Google Data Center Technician III",
     template: "%s | RTM-HD",
   },
   description:
-    "Senior Network Engineer with 8+ years building resilient ISP, enterprise, and cloud networks. Joining Google as Data Center Technician III at Hamina, Finland (July 2026).",
+    "Network Engineer with 8+ years building resilient ISP, enterprise, and cloud networks. Data Center Technician III at Google, Hamina, Finland.",
   keywords: [
     "Rodgers Momanyi",
     "Rodgers T Momanyi",
@@ -37,8 +37,10 @@ export const metadata: Metadata = {
     "Network Engineer Kenya",
     "Senior Network Engineer Nairobi",
     "Google Data Center Technician",
-    "Google Noogler 2026",
+    "Google Noogler",
     "Google Hamina Finland",
+    "Data Center Technician Finland",
+    "Network Engineer Finland",
     "DWDM Engineer",
     "BGP Engineer",
     "MPLS Network",
@@ -56,9 +58,9 @@ export const metadata: Metadata = {
     canonical: "https://rtmhd.tech",
   },
   openGraph: {
-    title: "Rodgers T. Momanyi — RTM-HD | Senior Network Engineer · Incoming Noogler",
+    title: "Rodgers T. Momanyi — RTM-HD | Network Engineer · Google Data Center Technician III",
     description:
-      "Senior Network Engineer with 8+ years building resilient ISP, enterprise, and cloud networks. Joining Google Hamina Data Center as DCT III in July 2026.",
+      "Network Engineer with 8+ years building resilient ISP, enterprise, and cloud networks. Data Center Technician III at Google Hamina, Finland.",
     url: "https://rtmhd.tech",
     siteName: "RTM-HD",
     locale: "en_US",
@@ -68,7 +70,7 @@ export const metadata: Metadata = {
         url: "/opengraph-image",
         width: 1200,
         height: 630,
-        alt: "Rodgers T. Momanyi — RTM-HD | Network Engineer · Incoming Noogler",
+        alt: "Rodgers T. Momanyi — RTM-HD | Network Engineer · Google Data Center Technician III",
       },
     ],
   },
@@ -76,7 +78,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Rodgers T. Momanyi — RTM-HD",
     description:
-      "Senior Network Engineer · Incoming Google Data Center Technician III · Hamina, Finland 2026",
+      "Network Engineer · Google Data Center Technician III · Hamina, Finland",
     creator: "@RTM_HD",
     images: ["/opengraph-image"],
   },
@@ -109,12 +111,12 @@ const jsonLd = {
         "width": 800,
         "height": 1000,
       },
-      "jobTitle": "Senior Network Core Systems & Solutions Manager",
-      "description": "Senior Network Engineer with 8+ years delivering resilient ISP, enterprise, and cloud networks. Leading a 19-member multidisciplinary team. Incoming Google Data Center Technician III at Hamina, Finland (July 2026).",
+      "jobTitle": "Data Center Technician III",
+      "description": "Network Engineer with 8+ years delivering resilient ISP, enterprise, and cloud networks, and former lead of a 19-member multidisciplinary team. Data Center Technician III at Google's Hamina, Finland campus since July 2026.",
       "worksFor": {
         "@type": "Organization",
-        "name": "Vilcom Networks",
-        "url": "https://vilcom.co.ke",
+        "name": "Google",
+        "url": "https://www.google.com",
       },
       "alumniOf": [
         { "@type": "Organization", "name": "Juniper Networks" },
@@ -137,8 +139,8 @@ const jsonLd = {
       ],
       "address": {
         "@type": "PostalAddress",
-        "addressLocality": "Nairobi",
-        "addressCountry": "KE",
+        "addressLocality": "Hamina",
+        "addressCountry": "FI",
       },
       "sameAs": [
         "https://www.linkedin.com/in/rodgers-momanyi-40033866/",
@@ -152,7 +154,7 @@ const jsonLd = {
       "@id": "https://rtmhd.tech/#website",
       "url": "https://rtmhd.tech",
       "name": "RTM-HD — Rodgers T. Momanyi",
-      "description": "Portfolio of Rodgers T. Momanyi — Senior Network Engineer & Incoming Google Noogler",
+      "description": "Portfolio of Rodgers T. Momanyi — Network Engineer & Google Data Center Technician III",
       "author": { "@id": "https://rtmhd.tech/#person" },
       "inLanguage": "en-US",
     },
@@ -160,7 +162,7 @@ const jsonLd = {
       "@type": "ProfilePage",
       "@id": "https://rtmhd.tech/#webpage",
       "url": "https://rtmhd.tech",
-      "name": "Rodgers T. Momanyi — RTM-HD | Network Engineer · Incoming Noogler",
+      "name": "Rodgers T. Momanyi — RTM-HD | Network Engineer · Google Data Center Technician III",
       "isPartOf": { "@id": "https://rtmhd.tech/#website" },
       "about": { "@id": "https://rtmhd.tech/#person" },
       "dateModified": new Date().toISOString(),

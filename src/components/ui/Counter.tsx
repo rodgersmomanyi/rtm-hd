@@ -1,7 +1,12 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { useInView } from "framer-motion";
+
+// Runs before paint on the client so the reset to 0 never flashes the real value,
+// and falls back to useEffect on the server where layout effects are a no-op.
+const useIsomorphicLayoutEffect =
+  typeof window !== "undefined" ? useLayoutEffect : useEffect;
 
 interface CounterProps {
   value: number;
@@ -20,11 +25,12 @@ export function Counter({
 }: CounterProps) {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-80px" });
-  const [count, setCount] = useState(0);
+  // Start at the real value so the server-rendered HTML carries the true number —
+  // crawlers and no-JS visitors must never see "0 Engineers Led". The client drops
+  // it to 0 on mount and animates back up.
+  const [count, setCount] = useState(value);
 
-  useEffect(() => {
-    if (!isInView) return;
-
+  useIsomorphicLayoutEffect(() => {
     const prefersReducedMotion = window.matchMedia(
       "(prefers-reduced-motion: reduce)"
     ).matches;
@@ -34,7 +40,13 @@ export function Counter({
       return;
     }
 
+    if (!isInView) {
+      setCount(0);
+      return;
+    }
+
     const start = performance.now();
+    let frame = 0;
 
     const tick = (now: number) => {
       const elapsed = now - start;
@@ -42,10 +54,11 @@ export function Counter({
       // easeOutExpo
       const eased = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
       setCount(Math.round(eased * value));
-      if (progress < 1) requestAnimationFrame(tick);
+      if (progress < 1) frame = requestAnimationFrame(tick);
     };
 
-    requestAnimationFrame(tick);
+    frame = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(frame);
   }, [isInView, value, duration]);
 
   return (

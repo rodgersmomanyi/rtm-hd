@@ -1,7 +1,6 @@
 import { ImageResponse } from "next/og";
 
-export const runtime = "edge";
-export const alt = "Rodgers T. Momanyi — RTM-HD | Network Engineer · Incoming Noogler";
+export const alt = "Rodgers T. Momanyi — RTM-HD | Network Engineer · Google Data Center Technician III";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -61,7 +60,9 @@ export default function OGImage() {
         />
 
         {/* Content */}
-        <div style={{ position: "relative", zIndex: 10, display: "flex", flexDirection: "column" }}>
+        {/* Satori ignores z-index — paint order is DOM order, so this sits above
+            the accent circles by virtue of coming after them. */}
+        <div style={{ position: "relative", display: "flex", flexDirection: "column" }}>
           <div
             style={{
               color: "#FF6A1A",
@@ -75,8 +76,12 @@ export default function OGImage() {
             NETWORK ENGINEER · OPTICAL INFRASTRUCTURE · CYBERSECURITY
           </div>
 
+          {/* Satori requires an explicit `display` on any element with >1 child,
+              so this is a flex column of two lines rather than a <br />-separated block. */}
           <div
             style={{
+              display: "flex",
+              flexDirection: "column",
               color: "#F6F5F1",
               fontSize: "76px",
               fontWeight: 900,
@@ -85,9 +90,8 @@ export default function OGImage() {
               marginBottom: "20px",
             }}
           >
-            RODGERS T.
-            <br />
-            MOMANYI
+            <div>RODGERS T.</div>
+            <div>MOMANYI</div>
           </div>
 
           <div
@@ -110,7 +114,7 @@ export default function OGImage() {
               letterSpacing: "0.06em",
             }}
           >
-            INCOMING NOOGLER · GOOGLE HAMINA DATA CENTER · FINLAND 2026
+            DATA CENTER TECHNICIAN III · GOOGLE HAMINA DATA CENTER · FINLAND
           </div>
         </div>
 
