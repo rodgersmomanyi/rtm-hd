@@ -27,6 +27,14 @@
   --fg: #0b0b0f;
   --border: rgba(11, 11, 15, 0.12);
 
+  /* The brand orange was tuned on the dark theme, where #ff6a1a reads at
+     ~5.8:1. On the off-white bg it drops to 2.6:1 — every eyebrow label
+     failed AA and white-on-orange buttons sat at 2.9:1. Light mode runs a
+     deeper cut of the same hue (4.75:1 as text, 5.2:1 under white); dark
+     mode restores the original below. Utilities pick this up because
+     Tailwind v4 compiles *-brand-orange to var(--color-brand-orange). */
+  --color-brand-orange: #c2410c;
+
   /* Glassmorphism tokens — light
      Border uses a dark-tinted stroke so panels are visible on the off-white bg */
   --glass-bg:        rgba(255, 255, 255, 0.78);
@@ -42,6 +50,7 @@ html.dark {
   --bg: #061a4a;
   --fg: #f6f5f1;
   --border: rgba(246, 245, 241, 0.12);
+  --color-brand-orange: #ff6a1a;
 
   /* Glassmorphism tokens — dark */
   --glass-bg:        rgba(255, 255, 255, 0.07);
