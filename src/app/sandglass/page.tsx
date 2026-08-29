@@ -1,15 +1,16 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { Footer } from "@/components/layout/Footer";
 
 /* ── Release facts — read from the shipped APK, keep in sync with public/sandglass/ ── */
 const APK = {
-  version: "0.1.0",
-  file: "sandglass-0.1.0.apk",
-  href: "/sandglass/sandglass-0.1.0.apk",
-  sizeLabel: "2.8 MB",
-  sizeBytes: "2,789,440 bytes",
+  version: "1.0.0",
+  file: "sandglass-1.0.0.apk",
+  href: "/sandglass/sandglass-1.0.0.apk",
+  sizeLabel: "2.7 MB",
+  sizeBytes: "2,805,820 bytes",
   sha256:
-    "420050e5af7989488c556d0def8d61f2ec163b121b8e71ebdfc50b1b24496634",
+    "fe8dae0d6e97c4eaa7b582f2b69510c6b86d386270da41605ba44e3a7f1f6e89",
   minAndroid: "Android 8.0 or newer",
   signer: "CN=Rodgers Momanyi, OU=IT, O=RTM-HD",
 };
@@ -193,6 +194,17 @@ export default function SandglassPage() {
             The APK is signed with my developer certificate. Android will warn you about
             installing apps from outside Google Play — that&apos;s expected until the Play
             listing is live.
+          </p>
+          <p
+            className="text-[var(--fg)] opacity-50 max-w-2xl mb-2"
+            style={{ fontSize: "0.85rem", lineHeight: 1.6 }}
+          >
+            Sandglass is free, with no ads and no tracking. If it earns a place in your
+            day, you can{" "}
+            <Link href="/support" className="underline underline-offset-4 opacity-90">
+              support the developer
+            </Link>
+            .
           </p>
           <p
             className="text-[var(--fg)] opacity-50 max-w-2xl mb-16"
