@@ -4,13 +4,13 @@ import { Footer } from "@/components/layout/Footer";
 
 /* ── Release facts — read from the shipped APK, keep in sync with public/sandglass/ ── */
 const APK = {
-  version: "1.0.0",
-  file: "sandglass-1.0.0.apk",
-  href: "/sandglass/sandglass-1.0.0.apk",
+  version: "1.0.1",
+  file: "sandglass-1.0.1.apk",
+  href: "/sandglass/sandglass-1.0.1.apk",
   sizeLabel: "2.7 MB",
-  sizeBytes: "2,805,820 bytes",
+  sizeBytes: "2,805,824 bytes",
   sha256:
-    "fe8dae0d6e97c4eaa7b582f2b69510c6b86d386270da41605ba44e3a7f1f6e89",
+    "68a676d7bf61aa3c994da9c44c51ad4461397858a59df569b3d3dc658217d9e5",
   minAndroid: "Android 8.0 or newer",
   signer: "CN=Rodgers Momanyi, OU=IT, O=RTM-HD",
 };
