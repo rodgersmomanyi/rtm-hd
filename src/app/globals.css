@@ -1,5 +1,11 @@
 @import "tailwindcss";
 
+/* The site switches theme with next-themes via a `dark` class on <html>.
+   Tailwind v4's default `dark:` variant keys off prefers-color-scheme, which
+   would make dark: styles react to the OS while the page itself follows the
+   toggle — so rebind it to the class. */
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
   /* Brand palette */
   --color-brand-blue: #0a4dff;
@@ -46,14 +52,12 @@ html.dark {
   --glass-shadow-lg: 0 20px 60px rgba(0,0,0,0.5), 0 4px 16px rgba(0,0,0,0.3);
 }
 
-/* ── Base resets ─────────────────────────────────────────── */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+/* ── Base resets ─────────────────────────────────────────────
+   NOTE: no universal `* { margin:0; padding:0 }` here. Tailwind's preflight
+   (layer base) already applies exactly that reset; an UNLAYERED copy of it
+   outranks every @layer rule and silently disables all m-*/p-* utilities
+   site-wide (that bug shipped — headings mashed together, containers flush
+   to the viewport edge). Keep base resets inside @layer base if ever needed. */
 
 html {
   scroll-behavior: auto;
